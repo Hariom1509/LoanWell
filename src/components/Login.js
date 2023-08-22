@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import AuthenticationService from "../service/AuthenticationService";
 import '../style/Login.css';
+import { Link } from "react-router-dom";
 
 const Login = () => {
 
@@ -56,7 +57,10 @@ const Login = () => {
             <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
             <br></br>
-            <button className="btn btn-primary" onClick={handleLogin}>Login</button>
+            <button className="btn btn-primary btn-lg" onClick={handleLogin}>Login</button>
+            <br/>
+            <br />
+            <h5>New User?&nbsp;<Link to = "/register">Register</Link></h5>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             {successMessage && <p className="success-message">{successMessage}</p>}
         

@@ -74,9 +74,9 @@ const Register = () => {
         if (!employee.fname) {
             validationErrors.fname = 'First Name is required.';
         }
-        // else if (!/^\d[a-zA-Z]*$/.test(employee.fname)) {
-        //     validationErrors.fname = 'Enter Alphabets Only';
-        // }
+        else if (!/^[A-Za-z]+$/.test(employee.fname)) {
+            validationErrors.fname = 'Enter Alphabets Only';
+        }
 
         if (!employee.lname) {
             validationErrors.lname = 'Last Name is required.';

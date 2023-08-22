@@ -16,16 +16,22 @@ const Sidebar = () =>{
                         <Link className="nav-link px-0 align-middle" to='/dashboard'><i class="fs-4 bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline">Dashboard</span></Link>
                     </li>
                     <li>
-                        <Link className="nav-link px-0 align-middle" to='/login'><i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Login</span></Link>
+                        <Link className="nav-link px-0 align-middle" to='/admin-dashboard'><i class="fs-4 bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline">Admin Dashboard</span></Link>
                     </li>
                     <li>
-                        <Link className="nav-link px-0 align-middle" to='/register'><i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Register</span></Link>
+                        <Link className="nav-link px-0 align-middle" to='/edit-cust-data'><i class="fs-4 bi-pencil"></i><span class="ms-1 d-none d-sm-inline">Edit Cust Data</span></Link>
                     </li>
                     <li>
-                        <Link className="nav-link px-0 align-middle" to='/apply'><i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Apply Loan</span></Link>
+                        <Link className="nav-link px-0 align-middle" to='/login'><i class="fs-4 bi-power"></i> <span class="ms-1 d-none d-sm-inline">Login</span></Link>
                     </li>
                     <li>
-                        <Link className="nav-link px-0 align-middle" to='/viewuseritems'><i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">View Purchases</span></Link>
+                        <Link className="nav-link px-0 align-middle" to='/register'><i class="fs-4 bi-house-lock"></i> <span class="ms-1 d-none d-sm-inline">Register</span></Link>
+                    </li>
+                    <li>
+                        <Link className="nav-link px-0 align-middle" to='/apply'><i class="fs-4 bi-bank"></i> <span class="ms-1 d-none d-sm-inline">Apply Loan</span></Link>
+                    </li>
+                    <li>
+                        <Link className="nav-link px-0 align-middle" to='/viewuseritems'><i class="fs-4 bi-credit-card"></i> <span class="ms-1 d-none d-sm-inline">View Purchases</span></Link>
                     </li>
                     <li>
                         <Link className="nav-link px-0 align-middle" to='/viewloans'><i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">View Loans</span></Link>
@@ -34,11 +40,11 @@ const Sidebar = () =>{
 
                 <hr/>
                 <div className="dropdown pb-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <p class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle" />
                         
                         <span class="d-none d-sm-inline mx-1">Hariom</span>
-                    </a>
+                    </p>
                     
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                     <li>

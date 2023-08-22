@@ -38,7 +38,7 @@ const ApplyUserLoans = () => {
     }
 
     useEffect(() => {
-        lastname==''?setLastname(loanCardData[0].loan_type):setLastname(lastname);
+        lastname===''?setLastname(loanCardData[0].loan_type):setLastname(lastname);
       },[lastname]);
 
 
@@ -79,9 +79,9 @@ const ApplyUserLoans = () => {
                     onChange={(e) => setMessage(e.target.value)}
                 />
                 <label htmlFor="">Item Make</label>
-                {lastname!=''?
+                {lastname!==''?
                  <select required >
-                    { makeForType.filter(function(el){return el.type == lastname})[0].make.map(items => { 
+                    { makeForType.filter(function(el){return el.type === lastname})[0].make.map(items => { 
                         return <option value={items}>
                             {items}</option>;
                         })
@@ -97,7 +97,7 @@ const ApplyUserLoans = () => {
                 <p>{body}</p>
                 <p>{author}</p> */}
                 <div>
-                    {console.log(makeForType.filter(function(el){return el.type == "Furniture"})[0].make)}
+                    {console.log(makeForType.filter(function(el){return el.type === "Furniture"})[0].make)}
                     {console.log(lastname)}
                 </div>
             </form>
