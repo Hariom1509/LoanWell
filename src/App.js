@@ -1,0 +1,28 @@
+import './App.css';
+import Sidebar from './components/Sidebar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './components/Login';
+import Register from './components/Register';
+import ApplyUserLoans from './components/ApplyUserLoans';
+import UserDashboard from './components/UserDashboard';
+import ViewUserItems from './components/ViewUserItems';
+import ViewUserLoans from './components/ViewUserLoans';
+
+function App() {
+  return (
+      <Router>
+        <Sidebar />
+        <Routes>
+          <Route path = '/' element={<Login />}/>
+          <Route path = '/login' element={<Login />} />
+          <Route path = '/register' element={<Register />} />
+          <Route path = '/dashboard' element={<UserDashboard />} />
+          <Route path = '/apply' element={<ApplyUserLoans />} />
+          <Route path = '/viewuseritems' element={<ViewUserItems />} />
+          <Route path = '/viewloans' element={<ViewUserLoans />} />
+        </Routes>
+      </Router>
+  );
+}
+
+export default App;
