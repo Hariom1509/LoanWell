@@ -10,7 +10,10 @@ import ViewUserLoans from './components/ViewUserLoans';
 
 function App() {
   return (
+
       <Router>
+                   <div class="container-fluid">
+                <div class="row flex-nowrap">
         <Sidebar />
         <Routes>
           <Route path = '/' element={<Login />}/>
@@ -21,6 +24,8 @@ function App() {
           <Route path = '/viewuseritems' element={<ViewUserItems />} />
           <Route path = '/viewloans' element={<ViewUserLoans />} />
         </Routes>
+        </div>
+</div>
       </Router>
   );
 }
