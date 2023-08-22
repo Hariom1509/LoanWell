@@ -1,0 +1,17 @@
+[
+    {
+        "type": "Furniture",
+        "make" : [
+            "Wooden",
+            "PVC",
+            "Iron"
+        ]
+    },
+    {
+        "type": "Stationary",
+        "make" : [
+            "Plastic",
+            "Paper"
+        ]
+    }
+]
