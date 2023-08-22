@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../style/ApplyUserLoan.css';
 import loanCardData from "../data/loanCard.json";
@@ -37,6 +37,9 @@ const ApplyUserLoans = () => {
         // history.go(-1);
     }
 
+    useEffect(() => {
+        lastname==''?setLastname(loanCardData[0].loan_type):setLastname(lastname);
+      },[lastname]);
 
 
     return (
@@ -55,7 +58,7 @@ const ApplyUserLoans = () => {
                     value={lastname}
                     onChange={(e) => setLastname(e.target.value)}
                 /> */}
-                <select required >
+                <select required onChange={(e)=>setLastname(e.target.value)}>
                     { loanCardData.map(items => { 
                         return <option value={items.loan_type}>
                             {items.loan_type}</option>;
@@ -76,17 +79,18 @@ const ApplyUserLoans = () => {
                     onChange={(e) => setMessage(e.target.value)}
                 />
                 <label htmlFor="">Item Make</label>
-                {/* <textarea
-                    value={details}
-                    onChange={(e) => setDetails(e.target.value)}
-                ></textarea> */}
+                {lastname!=''?
                  <select required >
-                    { makeForType.filter(function(el){return el.type == "Furniture"})[0].make.map(items => { 
+                    { makeForType.filter(function(el){return el.type == lastname})[0].make.map(items => { 
                         return <option value={items}>
                             {items}</option>;
                         })
                     }
-                </select>
+                </select> : "hello"}
+                {/* <textarea
+                    value={details}
+                    onChange={(e) => setDetails(e.target.value)}
+                ></textarea> */}
                 {!isPending && <button>Send Message</button>}
                 {isPending && <button disabled>Sending...</button>}
                 {/* <p>{title}</p>
@@ -94,7 +98,7 @@ const ApplyUserLoans = () => {
                 <p>{author}</p> */}
                 <div>
                     {console.log(makeForType.filter(function(el){return el.type == "Furniture"})[0].make)}
-                    {console.log(makeForType)}
+                    {console.log(lastname)}
                 </div>
             </form>
 
