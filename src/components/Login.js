@@ -29,7 +29,7 @@ const Login = () => {
             if (loginSuccess) {
               setSuccessMessage('Login successful. Redirecting...');
               setTimeout(() => {
-                history('/about-us'); // navigates to product Component
+                history('/dashboard'); // navigates to product Component
               }, 2000);
             } else {
               setErrorMessage('Invalid email or password.');
