@@ -175,32 +175,32 @@ const Register = () => {
                 </div>
 
                 <div className="form-group">
-                    <label for="dept">Department</label>
-                    <select required onChange={handleChange} className={errors.dept && 'error'}>
+                    <label for="dept">Department:</label>
+                    <span className="drop"><select required onChange={handleChange} className={errors.dept && 'error'}>
                         <option value = "CT">CT</option>
                         <option value = "DTI">DTI</option>
                         <option value = "TCOO">TCOO</option>
                         <option value = "CTO">CTO</option>
-                    </select>
+                    </select></span>
                     {errors.dept && <p className="error-message">{errors.dept}</p>}
                 </div>
 
                 <div className="form-group">
-                    <label for="gender">Gender</label>
-                    <select required onChange={handleChange} className={errors.gender && 'error'}>
+                    <label for="gender">Gender:</label>
+                    <span className="drop"><select required onChange={handleChange} className={errors.gender && 'error'}>
                         <option value = "male">Male</option>
                         <option value = "female">Female</option>
-                    </select>
+                    </select></span>
                     {errors.gender && <p className="error-message">{errors.gender}</p>}
                 </div>
 
                 <div className="form-group">
-                    <label for="design">Designation</label>
-                    <select required onChange={handleChange} className={errors.design && 'error'}>
+                    <label for="design">Designation:</label>
+                    <span className="drop"><select required onChange={handleChange} className={errors.design && 'error'}>
                         <option value = "pa">Program Associate</option>
                         <option value = "se">Software Engineer</option>
                         <option value = "mg">Manager</option>
-                    </select>
+                    </select></span>
                     {errors.design && <p className="error-message">{errors.design}</p>}
                 </div>
 
