@@ -18,9 +18,9 @@ import LoanCard from './components/LoanCard';
 function App() {
   return (
 
+    <div className="container-fluid">
+    <div class="row flex-nowrap">
       <Router>
-                   <div class="container-fluid">
-                <div class="row flex-nowrap">
         <Sidebar />
         <Routes>
           <Route path = '/' element={<Login />}/>
@@ -29,7 +29,7 @@ function App() {
           <Route path = '/register' element={<Register />} />
           <Route path = '/dashboard' element={<UserDashboard />} />
           <Route path = '/admin-dashboard' element={<AdminDashboard />} />
-          <Route path = 'edit-cust-data' element={<EditCustData />} />
+          <Route path = '/edit-cust-data' element={<EditCustData />} />
           <Route path = '/apply' element={<ApplyUserLoans />} />
           <Route path = '/viewuseritems' element={<ViewUserItems />} />
           <Route path = '/viewloans' element={<ViewUserLoans />} />
@@ -38,9 +38,9 @@ function App() {
           <Route path = '/addItem' element={<AddItem/>}/>
           <Route path = '/addLoan' element={<AddLoan/>}/>
         </Routes>
-        </div>
-</div>
       </Router>
+      </div>
+        </div>
   );
 }
 

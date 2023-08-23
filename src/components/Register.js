@@ -176,31 +176,34 @@ const Register = () => {
 
                 <div className="form-group">
                     <label for="dept">Department:</label>
-                    <span className="drop"><select required onChange={handleChange} className={errors.dept && 'error'}>
-                        <option value = "CT">CT</option>
-                        <option value = "DTI">DTI</option>
-                        <option value = "TCOO">TCOO</option>
-                        <option value = "CTO">CTO</option>
-                    </select></span>
+                        <select required onChange={handleChange} className='form-select form-select-sm mb-4' aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value = "CT">CT</option>
+                            <option value = "DTI">DTI</option>
+                            <option value = "TCOO">TCOO</option>
+                            <option value = "CTO">CTO</option>
+                        </select>
                     {errors.dept && <p className="error-message">{errors.dept}</p>}
                 </div>
 
                 <div className="form-group">
                     <label for="gender">Gender:</label>
-                    <span className="drop"><select required onChange={handleChange} className={errors.gender && 'error'}>
+                    <select required onChange={handleChange} className='form-select form-select-sm mb-4' aria-label="Default select example">
+                        <option selected>Open this select menu</option>
                         <option value = "male">Male</option>
                         <option value = "female">Female</option>
-                    </select></span>
+                    </select>
                     {errors.gender && <p className="error-message">{errors.gender}</p>}
                 </div>
 
                 <div className="form-group">
                     <label for="design">Designation:</label>
-                    <span className="drop"><select required onChange={handleChange} className={errors.design && 'error'}>
+                    <select required onChange={handleChange} className='form-select form-select-sm mb-4' aria-label="Default select example">
+                        <option selected>Open this select menu</option>
                         <option value = "pa">Program Associate</option>
                         <option value = "se">Software Engineer</option>
                         <option value = "mg">Manager</option>
-                    </select></span>
+                    </select>
                     {errors.design && <p className="error-message">{errors.design}</p>}
                 </div>
 

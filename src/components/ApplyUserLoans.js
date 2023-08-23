@@ -91,7 +91,7 @@ const ApplyUserLoans = () => {
                     value={details}
                     onChange={(e) => setDetails(e.target.value)}
                 ></textarea> */}
-                {!isPending && <button>Send Message</button>}
+                {!isPending && <button>Apply Loan</button>}
                 {isPending && <button disabled>Sending...</button>}
                 {/* <p>{title}</p>
                 <p>{body}</p>
