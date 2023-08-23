@@ -1,0 +1,46 @@
+
+[
+    {
+        "item_id":1,
+        "description":"Table",
+        "item_make": "Wooden",
+        "item_category":"Furniture",
+        "item_valuation": 3000
+    },
+    {
+        "item_id":2,
+        "description":"Chair",
+        "item_make": "Wooden",
+        "item_category":"Furniture",
+        "item_valuation": 4000
+    },
+    {
+        "item_id":3,
+        "description":"Cabinet",
+        "item_make": "PVC",
+        "item_category":"Furniture",
+        "item_valuation": 1500
+    },
+    {
+        "item_id":4,
+        "description":"Cupboard",
+        "item_make": "Iron",
+        "item_category":"Furniture",
+        "item_valuation": 10000
+    },
+    {
+        "item_id":5,
+        "description":"Pen",
+        "item_make": "Plastic",
+        "item_category":"Stationary",
+        "item_valuation": 10
+    },
+    {
+        "item_id":6,
+        "description":"Diary",
+        "item_make": "Paper",
+        "item_category":"Stationary",
+        "item_valuation": 150
+    }
+]
+

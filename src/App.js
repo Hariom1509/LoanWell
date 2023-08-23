@@ -9,6 +9,8 @@ import ViewUserItems from './components/ViewUserItems';
 import ViewUserLoans from './components/ViewUserLoans';
 import AdminDashboard from './components/AdminDashboard';
 import EditCustData from './components/EditCustData';
+import ItemCard from './components/ItemCard';
+import AddItem from './components/AddItem';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path = '/apply' element={<ApplyUserLoans />} />
           <Route path = '/viewuseritems' element={<ViewUserItems />} />
           <Route path = '/viewloans' element={<ViewUserLoans />} />
+          <Route path = '/viewItems' element={<ItemCard/>} />
+          <Route path = '/addItem' element={<AddItem/>}/>
         </Routes>
         </div>
 </div>
