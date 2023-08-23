@@ -1,12 +1,12 @@
 
 [
     {
-        "load_id":1,
+        "loan_id":1,
         "loan_type":"Furniture",
         "duration": 5
     },
     {
-        "load_id":2,
+        "loan_id":2,
         "loan_type":"Stationary",
         "duration": 1
     }

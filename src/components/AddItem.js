@@ -41,7 +41,7 @@ const AddItem = () => {
 
     useEffect(() => {
         itemCategory===''?setItemCategory(loanCardData[0].loan_type):setItemCategory(itemCategory);
-      },[setItemCategory]);
+      },[itemCategory]);
 
 
     return (

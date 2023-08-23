@@ -12,6 +12,8 @@ import EditCustData from './components/EditCustData';
 import ItemCard from './components/ItemCard';
 import AddItem from './components/AddItem';
 import AdminLogin from './components/AdminLogin';
+import AddLoan from './components/AddLoan';
+import LoanCard from './components/LoanCard';
 
 function App() {
   return (
@@ -32,7 +34,9 @@ function App() {
           <Route path = '/viewuseritems' element={<ViewUserItems />} />
           <Route path = '/viewloans' element={<ViewUserLoans />} />
           <Route path = '/viewItems' element={<ItemCard/>} />
+          <Route path = '/viewLoans1' element={<LoanCard/>} />
           <Route path = '/addItem' element={<AddItem/>}/>
+          <Route path = '/addLoan' element={<AddLoan/>}/>
         </Routes>
         </div>
 </div>
