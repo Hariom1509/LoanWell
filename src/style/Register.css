@@ -24,13 +24,22 @@
   }
   
   input[type="text"],
-  input[type="email"],
+  input[type="empid"],
   input[type="password"],
   input[type="date"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
+  }
+
+  .create select {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 10px 0;
+    border: 1px solid solid #ddd;
+    box-sizing: border-box;
+    display: block;
   }
   
   .error {

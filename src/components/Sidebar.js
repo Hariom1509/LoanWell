@@ -19,9 +19,6 @@ const Sidebar = () =>{
                         <Link className="nav-link px-0 align-middle" to='/admin-dashboard'><i class="fs-4 bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline">Admin Dashboard</span></Link>
                     </li>
                     <li>
-                        <Link className="nav-link px-0 align-middle" to='/edit-cust-data'><i class="fs-4 bi-pencil"></i><span class="ms-1 d-none d-sm-inline">Edit Cust Data</span></Link>
-                    </li>
-                    <li>
                         <Link className="nav-link px-0 align-middle" to='/login'><i class="fs-4 bi-power"></i> <span class="ms-1 d-none d-sm-inline">Login</span></Link>
                     </li>
                     <li>

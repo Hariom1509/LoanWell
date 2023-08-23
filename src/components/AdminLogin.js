@@ -4,7 +4,7 @@ import AuthenticationService from "../service/AuthenticationService";
 import '../style/Login.css';
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const AdminLogin = () => {
 
     const history = useNavigate();
 
@@ -30,7 +30,7 @@ const Login = () => {
             if (loginSuccess) {
               setSuccessMessage('Login successful. Redirecting...');
               setTimeout(() => {
-                history('/dashboard'); // navigates to product Component
+                history('/admin-dashboard'); // navigates to product Component
               }, 2000);
             } else {
               setErrorMessage('Invalid email or password.');
@@ -45,7 +45,7 @@ const Login = () => {
     return(
         <div className="container">
           
-            <span className='head'><h2>LOGIN</h2></span>
+            <span className='head'><h2>ADMIN LOGIN</h2></span>
             <br></br>
             <br></br>
             <div className="form-group">
@@ -58,13 +58,6 @@ const Login = () => {
             </div>
             <br></br>
             <button className="btn btn-primary btn-lg" onClick={handleLogin}>Login</button>
-            <br/>
-            <br />
-            <h5>New User?&nbsp;<Link to = "/register">Register</Link></h5>
-
-            
-            <br />
-            <h5><Link to = "/admin-login">Log in as Admin</Link></h5>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             {successMessage && <p className="success-message">{successMessage}</p>}
         
@@ -72,4 +65,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default AdminLogin;

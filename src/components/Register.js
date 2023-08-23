@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import '../style/Register.css';
+import '../style/ApplyUserLoan.css';
 import AuthenticationService from '../service/AuthenticationService';
 
 const Register = () => {
@@ -10,13 +11,16 @@ const Register = () => {
 
     //defining state
     const [employee, setEmployee] = useState({
-        email: '',
+        empid: '',
         fname: '',
         lname: '',
         password: '',
+        dept: '',
+        gender: '',
+        design: '',
         dob: '',
+        doj: '',
         phoneNo: '',
-        
     });
 
 
@@ -67,8 +71,8 @@ const Register = () => {
     const validateForm = () => {
         let validationErrors = {};
 
-        if (!employee.email) {
-            validationErrors.email = 'Email is required.';
+        if (!employee.empid) {
+            validationErrors.empid = 'Emp ID is required.';
         }
 
         if (!employee.fname) {
@@ -88,8 +92,24 @@ const Register = () => {
             validationErrors.password = 'Password must be at least 6 characters.';
         }
 
+        if (!employee.dept) {
+            validationErrors.dept = 'Department is required.';
+        }
+
+        if (!employee.gender) {
+            validationErrors.gender = 'Gender is required.';
+        }
+
+        if (!employee.design) {
+            validationErrors.design = 'Designation is required.';
+        }
+
         if (!employee.dob) {
             validationErrors.dob = 'Date of Birth is required.';
+        }
+
+        if (!employee.doj) {
+            validationErrors.doj = 'Date of Joining is required.';
         }
 
         if (!employee.phoneNo) {
@@ -109,15 +129,15 @@ const Register = () => {
             {successMessage && <p className="success-message">{successMessage}</p>}
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label>Email:</label>
+                    <label>Employee ID:</label>
                     <input
-                        type="email"
-                        name="email"
-                        value={employee.email}
+                        type="empid"
+                        name="empid"
+                        value={employee.empid}
                         onChange={handleChange}
-                        className={errors.email && 'error'}
+                        className={errors.empid && 'error'}
                     />
-                    {errors.email && <p className="error-message">{errors.email}</p>}
+                    {errors.empid && <p className="error-message">{errors.empid}</p>}
                 </div>
                 <div className="form-group">
                     <label>First Name:</label>
@@ -155,6 +175,36 @@ const Register = () => {
                 </div>
 
                 <div className="form-group">
+                    <label for="dept">Department</label>
+                    <select required onChange={handleChange} className={errors.dept && 'error'}>
+                        <option value = "CT">CT</option>
+                        <option value = "DTI">DTI</option>
+                        <option value = "TCOO">TCOO</option>
+                        <option value = "CTO">CTO</option>
+                    </select>
+                    {errors.dept && <p className="error-message">{errors.dept}</p>}
+                </div>
+
+                <div className="form-group">
+                    <label for="gender">Gender</label>
+                    <select required onChange={handleChange} className={errors.gender && 'error'}>
+                        <option value = "male">Male</option>
+                        <option value = "female">Female</option>
+                    </select>
+                    {errors.gender && <p className="error-message">{errors.gender}</p>}
+                </div>
+
+                <div className="form-group">
+                    <label for="design">Designation</label>
+                    <select required onChange={handleChange} className={errors.design && 'error'}>
+                        <option value = "pa">Program Associate</option>
+                        <option value = "se">Software Engineer</option>
+                        <option value = "mg">Manager</option>
+                    </select>
+                    {errors.design && <p className="error-message">{errors.design}</p>}
+                </div>
+
+                <div className="form-group">
                     <label>Date of Birth:</label>
                     <input
                         type="date"
@@ -164,6 +214,18 @@ const Register = () => {
                         className={errors.dob && 'error'}
                     />
                     {errors.dob && <p className="error-message">{errors.dob}</p>}
+                </div>
+
+                <div className="form-group">
+                    <label>Date of Joining:</label>
+                    <input
+                        type="date"
+                        name="doj"
+                        value={employee.doj}
+                        onChange={handleChange}
+                        className={errors.doj && 'error'}
+                    />
+                    {errors.doj && <p className="error-message">{errors.doj}</p>}
                 </div>
 
                 <div className="form-group">

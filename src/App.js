@@ -11,6 +11,7 @@ import AdminDashboard from './components/AdminDashboard';
 import EditCustData from './components/EditCustData';
 import ItemCard from './components/ItemCard';
 import AddItem from './components/AddItem';
+import AdminLogin from './components/AdminLogin';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route path = '/' element={<Login />}/>
           <Route path = '/login' element={<Login />} />
+          <Route path = '/admin-login' element={<AdminLogin />} />
           <Route path = '/register' element={<Register />} />
           <Route path = '/dashboard' element={<UserDashboard />} />
           <Route path = '/admin-dashboard' element={<AdminDashboard />} />

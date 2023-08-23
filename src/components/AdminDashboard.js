@@ -9,9 +9,9 @@ const AdminDashboard = () => {
             <br />
             <br />
             <div class="d-grid gap-3 col-6 mx-auto">
-                <button class="btn btn-secondary" type="button"><Link to='/viewloans' style={{ textDecoration: 'none', color:'white' }}>Customer Data Management</Link></button>
+                <button class="btn btn-secondary" type="button"><Link to='/edit-cust-data' style={{ textDecoration: 'none', color:'white' }}>Customer Data Management</Link></button>
                 <button class="btn btn-dark" type="button"><Link to='/apply' style={{ textDecoration: 'none', color:'white' }}>Loan Card Management</Link></button>
-                <button class="btn btn-info" type="button"><Link to='/viewuseritems' style={{ textDecoration: 'none', color:'black' }}>Item Master Data</Link></button>
+                <button class="btn btn-info" type="button"><Link to='/viewItems' style={{ textDecoration: 'none', color:'black' }}>Item Master Data</Link></button>
             </div>
         </div>
     );
