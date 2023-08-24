@@ -31,7 +31,7 @@ const AdminLogin = () => {
               setSuccessMessage('Login successful. Redirecting...');
               setTimeout(() => {
                 history('/admin-dashboard'); // navigates to product Component
-              }, 2000);
+              }, 0);
             } else {
               setErrorMessage('Invalid email or password.');
             }
@@ -57,7 +57,9 @@ const AdminLogin = () => {
             <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
             <br></br>
-            <button className="btn btn-primary btn-lg" onClick={handleLogin}>Login</button>
+            <div className="form-group d-grid gap-2 col-6 mx-auto">
+              <button className="btn btn-success" onClick={handleLogin}>Login</button>
+            </div>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             {successMessage && <p className="success-message">{successMessage}</p>}
         
