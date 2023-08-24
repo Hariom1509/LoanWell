@@ -14,16 +14,22 @@ import AddItem from './components/AddItem';
 import AdminLogin from './components/AdminLogin';
 import AddLoan from './components/AddLoan';
 import LoanCard from './components/LoanCard';
+import Home from './components/Home';
+import bgVideo from "./assets/bgVideo.mp4";
+
 
 function App() {
   return (
 
     <div className="container-fluid">
     <div class="row flex-nowrap">
+    {/* <video style={{diplay:'flex', width: '90%', transform: 'rotate (-90deg)', position: 'absolute',zIndex:"-1"}} autoPlay loop muted>
+                <source src={bgVideo} type='video/mp4' />
+                </video> */}
       <Router>
         <Sidebar />
         <Routes>
-          <Route path = '/' element={<Login />}/>
+          <Route path = '/' element={<Home />}/>
           <Route path = '/login' element={<Login />} />
           <Route path = '/admin-login' element={<AdminLogin />} />
           <Route path = '/register' element={<Register />} />
