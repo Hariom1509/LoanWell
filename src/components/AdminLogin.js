@@ -8,19 +8,19 @@ const AdminLogin = () => {
 
     const history = useNavigate();
 
-    const [email, setEmail] = useState('');
+    const [employee_id, setEmployee_id] = useState('');
     const [password, setPassword] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleLogin = async () => {
-        if (!email || !password) {
-          setErrorMessage('Please enter both email and password.');
+        if (!employee_id || !password) {
+          setErrorMessage('Please enter both employee_id and password.');
           return;
         }
     
         const employee = {
-          email,
+          employee_id,
           password
         };
 
@@ -33,7 +33,7 @@ const AdminLogin = () => {
                 history('/admin-dashboard'); // navigates to product Component
               }, 0);
             } else {
-              setErrorMessage('Invalid email or password.');
+              setErrorMessage('Invalid employee_id or password.');
             }
           } catch (error) {
             console.error('Login error', error);
@@ -49,8 +49,8 @@ const AdminLogin = () => {
             <br></br>
             <br></br>
             <div className="form-group">
-            <label>Email:</label>
-            <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <label>Employee_id:</label>
+            <input type="employee_id" className="form-control" value={employee_id} onChange={(e) => setEmployee_id(e.target.value)} />
             </div>
             <div className="form-group">
             <label>Password:</label>

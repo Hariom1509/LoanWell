@@ -11,16 +11,14 @@ const Register = () => {
 
     //defining state
     const [employee, setEmployee] = useState({
-        empid: '',
-        fname: '',
-        lname: '',
-        password: '',
-        dept: '',
+        employee_id: '',
+        employee_name: '',
+        designation: '',
+        department: '',
         gender: '',
-        design: '',
         dob: '',
         doj: '',
-        phoneNo: '',
+        password: '',
     });
 
 
@@ -71,19 +69,14 @@ const Register = () => {
     const validateForm = () => {
         let validationErrors = {};
 
-        if (!employee.empid) {
-            validationErrors.empid = 'Emp ID is required.';
-        }
+        // if (!employee.employee_id) {
+        //     validationErrors.employee_id = 'Emp ID is required.';
+        // }
 
-        if (!employee.fname) {
-            validationErrors.fname = 'First Name is required.';
-        }
-        else if (!/^[A-Za-z]+$/.test(employee.fname)) {
-            validationErrors.fname = 'Enter Alphabets Only';
-        }
-
-        if (!employee.lname) {
-            validationErrors.lname = 'Last Name is required.';
+        if (!employee.employee_name) {
+            validationErrors.employee_name = 'Name is required.';
+        } else if(!/^[a-zA-Z ]*$/.test(employee.employee_name)) {
+            validationErrors.employee_name = 'Name can only be alphabet';
         }
 
         if (!employee.password) {
@@ -92,16 +85,16 @@ const Register = () => {
             validationErrors.password = 'Password must be at least 6 characters.';
         }
 
-        if (!employee.dept) {
-            validationErrors.dept = 'Department is required.';
+        if (!employee.department) {
+            validationErrors.department = 'Department is required.';
         }
 
         if (!employee.gender) {
             validationErrors.gender = 'Gender is required.';
         }
 
-        if (!employee.design) {
-            validationErrors.design = 'Designation is required.';
+        if (!employee.designation) {
+            validationErrors.designation = 'designationation is required.';
         }
 
         if (!employee.dob) {
@@ -112,11 +105,11 @@ const Register = () => {
             validationErrors.doj = 'Date of Joining is required.';
         }
 
-        if (!employee.phoneNo) {
-            validationErrors.phoneNo = 'Phone number is required.';
-        } else if (!/^\d{10}$/.test(employee.phoneNo)) {
-            validationErrors.phoneNo = 'Invalid phone number. Please enter a 10-digit number.';
-        }
+        // if (!employee.phoneNo) {
+        //     validationErrors.phoneNo = 'Phone number is required.';
+        // } else if (!/^\d{10}$/.test(employee.phoneNo)) {
+        //     validationErrors.phoneNo = 'Invalid phone number. Please enter a 10-digit number.';
+        // }
 
 
         return validationErrors;
@@ -127,46 +120,35 @@ const Register = () => {
             <h2 className='head'>EMPLOYEE REGISTRATION</h2>
             {successMessage && <p className="success-message">{successMessage}</p>}
             <form onSubmit={handleSubmit} class="form-horizontal">
-                <div className="form-group col-md-12">
-                    <label for="inputsm">Employee ID:</label>
-                    <input
-                        type="empid"
-                        name="empid"
-                        value={employee.empid}
-                        onChange={handleChange}
-                        className={errors.empid && 'error' && 'input-sm'}
-                        style={{height:'37px'}}
-                        id = 'inputsm'
-                    />
-                    {errors.empid && <p className="error-message">{errors.empid}</p>}
+            <div className='row'>
+                    <div className='col'>
+                        <div className="form-group">
+                            <label>Employee Id:</label>
+                            <input
+                                type="text"
+                                name="employee_id"
+                                value={employee.employee_id}
+                                onChange={handleChange}
+                                className={errors.employee_id && 'error'}
+                                style={{height:'37px'}}
+                            />
+                            {errors.employee_id && <p className="error-message">{errors.employee_id}</p>}
+                        </div>
+                    </div>
                 </div>
                 <div className='row'>
                     <div className='col'>
                         <div className="form-group">
-                            <label>First Name:</label>
+                            <label>Employee Name:</label>
                             <input
                                 type="text"
-                                name="fname"
-                                value={employee.fname}
+                                name="employee_name"
+                                value={employee.employee_name}
                                 onChange={handleChange}
-                                className={errors.fname && 'error'}
+                                className={errors.employee_name && 'error'}
                                 style={{height:'37px'}}
                             />
-                            {errors.fname && <p className="error-message">{errors.fname}</p>}
-                        </div>
-                    </div>
-                    <div className='col'>
-                        <div className="form-group">
-                            <label>Last Name:</label>
-                            <input
-                                type="text"
-                                name="lname"
-                                value={employee.lname}
-                                onChange={handleChange}
-                                className={errors.lname && 'error'}
-                                style={{height:'37px'}}
-                            />
-                            {errors.lname && <p className="error-message">{errors.lname}</p>}
+                            {errors.employee_name && <p className="error-message">{errors.employee_name}</p>}
                         </div>
                     </div>
                 </div>
@@ -187,38 +169,38 @@ const Register = () => {
                 <div className='row'>
                     <div className='col'>
                         <div className="form-group">
-                            <label for="dept">Department:</label>
-                                <select required onChange={handleChange} className='form-select form-select-sm mb-4' aria-label="Default select example">
+                            <label for="department">Department:</label>
+                                <select required name = "department" value={employee.department} onChange={handleChange} className='form-select form-select-sm mb-4' aria-label="Default select example">
                                     <option selected>Open this select menu</option>
                                     <option value = "CT">CT</option>
                                     <option value = "DTI">DTI</option>
                                     <option value = "TCOO">TCOO</option>
                                     <option value = "CTO">CTO</option>
                                 </select>
-                            {errors.dept && <p className="error-message">{errors.dept}</p>}
+                            {errors.department && <p className="error-message">{errors.department}</p>}
                         </div>
                     </div>
 
                     <div className='col'>
                         <div className="form-group">
-                            <label for="design">Designation:</label>
-                            <select required onChange={handleChange} className='form-select form-select-sm mb-4' aria-label="Default select example">
+                            <label for="designation">designation:</label>
+                            <select name = "designation" required value={employee.designation} onChange={handleChange} className='form-select form-select-sm mb-4' aria-label="Default select example">
                                 <option selected>Open this select menu</option>
-                                <option value = "pa">Program Associate</option>
-                                <option value = "se">Software Engineer</option>
-                                <option value = "mg">Manager</option>
+                                <option value = "Program Associate">Program Associate</option>
+                                <option value = "Software Engineer">Software Engineer</option>
+                                <option value = "Manager">Manager</option>
                             </select>
-                            {errors.design && <p className="error-message">{errors.design}</p>}
+                            {errors.designation && <p className="error-message">{errors.designation}</p>}
                         </div>
                     </div>
                 </div>
 
                 <div className="form-group">
                     <label for="gender">Gender:</label>
-                    <select required onChange={handleChange} className='form-select form-select-sm mb-4' aria-label="Default select example">
+                    <select name =  "gender" required value={employee.gender} onChange={handleChange} className='form-select form-select-sm mb-4' aria-label="Default select example">
                         <option selected>Open this select menu</option>
-                        <option value = "male">Male</option>
-                        <option value = "female">Female</option>
+                        <option value = "M">Male</option>
+                        <option value = "F">Female</option>
                     </select>
                     {errors.gender && <p className="error-message">{errors.gender}</p>}
                 </div>
@@ -252,19 +234,6 @@ const Register = () => {
                             {errors.doj && <p className="error-message">{errors.doj}</p>}
                         </div>
                     </div>
-                </div>
-
-                <div className="form-group">
-                    <label>Phone Number:</label>
-                    <input
-                        type="text"
-                        name="phoneNo"
-                        value={employee.phoneNo}
-                        onChange={handleChange}
-                        className={errors.phoneNo && 'error'}
-                        style={{height:'37px'}}
-                    />
-                    {errors.phoneNo && <p className="error-message">{errors.phoneNo}</p>}
                 </div>
 
                 <div className="form-group d-grid gap-2 col-6 mx-auto">

@@ -30,7 +30,8 @@ class AuthenticationService{
 
     static async registerEmployee(employee) {
         try {
-          const response = await axios.post('http://localhost:8085/lms/api/register', employee); // Adjust the API endpoint
+          const response = await axios.post('http://localhost:8085/lms/api/register', employee);
+          console.log(employee) // Adjust the API endpoint
           return response.data;
         } catch (error) {
           console.error('Registration error', error);
