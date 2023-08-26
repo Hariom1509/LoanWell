@@ -16,6 +16,8 @@ import AddLoan from './components/AddLoan';
 import LoanCard from './components/LoanCard';
 import Home from './components/Home';
 import bgVideo from "./assets/bgVideo.mp4";
+import EditItem from './components/EditItem';
+import EditLoan from './components/EditLoan';
 
 
 function App() {
@@ -40,9 +42,11 @@ function App() {
           <Route path = '/viewuseritems' element={<ViewUserItems />} />
           <Route path = '/viewloans' element={<ViewUserLoans />} />
           <Route path = '/viewItems' element={<ItemCard/>} />
-          <Route path = '/viewLoans1' element={<LoanCard/>} />
           <Route path = '/addItem' element={<AddItem/>}/>
+          <Route path = '/editItem/:id' element={<EditItem/>}/>
+          <Route path = '/viewLoans1' element={<LoanCard/>} />
           <Route path = '/addLoan' element={<AddLoan/>}/>
+          <Route path = '/editLoan/:id' element={<EditLoan/>}/>
         </Routes>
       </Router>
       </div>

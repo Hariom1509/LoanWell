@@ -1,13 +1,15 @@
 import React from "react";
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 import makeForType from "../data/makeForType.json";
 import loanCardData from "../data/loanCard.json";
 
-import '../style/AddItem.css';
+import '../style/EditItem.css';
 
 
-const AddItem = () => {
+const EditItem = () => {
+
+    const id = useParams();
 
     const [itemCategory, setItemCategory] = useState('');
     const [itemDescription, setItemDescription] = useState('');
@@ -28,20 +30,20 @@ const AddItem = () => {
             const addItemForm = { item_category: itemCategory, item_description: itemDescription, item_valuation: itemValue, item_make: itemMake };
             console.log(addItemForm);
             try {
-                fetch('http://localhost:8085/lms/api/items', {
-                    method: 'POST',
+                fetch('http://localhost:8085/lms/api/items/'+id["id"], {
+                    method: 'PUT',
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(addItemForm)
                 }).then(() => {
-                    console.log('new item added');
+                    console.log('old item edited');
                     setIsPending(false);
                     alert("Redirecting to item list...");
                     history('/viewItems');
 
                 })
             } catch (error) {
-                console.error('Registration item error', error);
-                alert('An error occurred during adding item.');
+                console.error('Edit item error', error);
+                alert('An error occurred during editing item.');
                 setIsPending(false);
             }
         } else {
@@ -70,13 +72,32 @@ const AddItem = () => {
     };
 
     useEffect(() => {
-        itemCategory === '' ? setItemCategory(loanCardData[0].loan_type) : setItemCategory(itemCategory);
-    }, [itemCategory]);
+        // itemCategory === '' ? setItemCategory(loanCardData[0].loan_type) : setItemCategory(itemCategory);
+            try {
+                fetch('http://localhost:8085/lms/api/items/'+id["id"])
+                .then(res => {
+                    console.log(res);
+                    if(!res.ok){
+                        throw Error('could not fetch the data for that resource');
+                    }
+                    return res.json()
+                })
+                .then(data =>{
+                    setItemCategory(data.item_category);
+                    setItemDescription(data.item_description);
+                    setItemMake(data.item_make);
+                    setItemValue(data.item_valuation);
+                })
+            } catch (error) {
+                alert('An error occurred during fetching items.');  
+            }
+        
+    }, []);
 
 
     return (
         <div className="create">
-            <h2>Add Item Master Data Details</h2>
+            <h3>Edit Item Id: {id["id"]}</h3>
             <form action="" onSubmit={handleSubmit}>
 
                 <label htmlFor="">Item Category</label>
@@ -113,7 +134,7 @@ const AddItem = () => {
                     <select  onChange={(e) => setItemMake(e.target.value)}>
                         <option>Select Value</option>
                         {makeForType.filter(function (el) { return el.type === itemCategory })[0].make.map(items => {
-                            return <option value={items}>
+                            return <option selected={items===itemMake} value={items}>
                                 {items}</option>;
                         })
                         }
@@ -122,8 +143,8 @@ const AddItem = () => {
 
                 </>}
 
-                {!isPending && <button>Add Item</button>}
-                {isPending && <button disabled>Adding...</button>}
+                {!isPending && <button>Edit</button>}
+                {isPending && <button disabled>Editing...</button>}
             </form>
 
         </div>
@@ -132,7 +153,7 @@ const AddItem = () => {
 
 };
 
-export default AddItem;
+export default EditItem;
 
 
 

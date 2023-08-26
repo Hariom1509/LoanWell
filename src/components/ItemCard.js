@@ -1,13 +1,14 @@
 import React,{useState, useEffect} from "react";
 import itemCard from "../data/itemCard.json";
 import useFetch from "../service/useFetch";
+import { useNavigate } from "react-router-dom";
 
 
 const ItemCard = () => {
 
     const [allItems,setAllItems] = useState([]);
 
-    
+    const history = useNavigate();
 
     useEffect(() => {  // reactHook - Runs only once on the firts Render
         fetchItems();
@@ -32,6 +33,14 @@ const ItemCard = () => {
         }
     }
 
+    const addItem = () => {
+        history('/addItem');
+    }
+
+    const editItem = (id) => {
+        history(`/editItem/${id}`);
+    }
+
     const deleteItem = (id) => {
         try {
             fetch('http://localhost:8085/lms/api/items/'+id, {
@@ -51,6 +60,10 @@ const ItemCard = () => {
         <div className="container">
             <h2 className="head"> Item Data</h2>
             <br />
+            <div className="row justify-content-center">
+                <button className="btn btn-info w-auto" onClick={addItem}>Add Item</button>
+            </div >
+            <br/>
             <table class="table table-dark table-striped">
             <thead>
                 <tr>
@@ -72,7 +85,7 @@ const ItemCard = () => {
                         <td>{item.item_make}</td>
                         <td>{item.item_category}</td>
                         <td>{item.item_valuation}</td>
-                        <td><button type="button" class="btn btn-warning btn-sm">Edit</button></td>
+                        <td><button type="button" class="btn btn-warning btn-sm" onClick={() => editItem(item.item_id)}>Edit</button></td>
                         <td><button type="button" class="btn btn-danger btn-sm" onClick={() => deleteItem(item.item_id)}>Delete</button></td>
                     </tr>)
                 })}

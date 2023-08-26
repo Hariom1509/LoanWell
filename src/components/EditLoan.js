@@ -1,18 +1,20 @@
 import React from "react";
 import { useState,useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 import loanCardData from "../data/loanCard.json";
 
 import '../style/AddItem.css';
 
 
-const AddLoan = () => {
+const EditLoan = () => {
 
     const [loanType, setLoanType] = useState('');
     const [loanDuration, setLoanDuration] = useState('');
       
     const [isPending, setIsPending] = useState(false);
     const history = useNavigate();
+
+    const id = useParams();
 
     const [errors,setErrors] = useState({});
 
@@ -23,20 +25,20 @@ const AddLoan = () => {
         if (Object.keys(validationErrors).length == 0) {
             const addLoanForm = { loan_type: loanType,duration_in_years: loanDuration };
             try {
-                fetch('http://localhost:8085/lms/api/loans', {
-                    method: 'POST',
+                fetch('http://localhost:8085/lms/api/loans/'+id["id"], {
+                    method: 'PUT',
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(addLoanForm)
                 }).then(() => {
-                    console.log('new loan added');
+                    console.log('old loan edited');
                     setIsPending(false);
                     alert("Redirecting to loan list...");
                     history('/viewLoans1');
 
                 })
             } catch (error) {
-                console.error('Registration loan error', error);
-                alert('An error occurred during adding loan.');
+                console.error('Edit loan error', error);
+                alert('An error occurred during editing loan.');
                 setIsPending(false);
             }
         }else{
@@ -46,8 +48,24 @@ const AddLoan = () => {
     }
 
     useEffect(() => {
-        loanType===''?setLoanType(loanCardData[0].loan_type):setLoanType(loanType);
-      },[loanType]);
+        try {
+            fetch('http://localhost:8085/lms/api/loans/'+id["id"])
+            .then(res => {
+                console.log(res);
+                if(!res.ok){
+                    throw Error('could not fetch the data for that resource');
+                }
+                return res.json()
+            })
+            .then(data =>{
+                setLoanType(data.loan_type);
+                setLoanDuration(data.duration_in_years);
+                
+            })
+        } catch (error) {
+            alert('An error occurred during fetching items.');  
+        }
+    },[]);
       
       const validateForm = () => {
         let validationErrors = {}
@@ -72,7 +90,7 @@ const AddLoan = () => {
                 <label htmlFor="">Loan Type</label>
                 <select  onChange={(e)=>setLoanType(e.target.value)}>
                     { loanCardData.map(items => { 
-                        return <option value={items.loan_type}>
+                        return <option  selected={items.loan_type===loanType} value={items.loan_type}>
                             {items.loan_type}</option>;
                         })
                     }
@@ -90,8 +108,8 @@ const AddLoan = () => {
                 {errors.loanDuration && <p className="error-message">{errors.loanDuration}</p>}
 
     
-                {!isPending && <button>Add Loan</button>}
-                {isPending && <button disabled>Adding...</button>}
+                {!isPending && <button>Edit Loan</button>}
+                {isPending && <button disabled>Editing...</button>}
             </form>
 
         </div>
@@ -100,7 +118,7 @@ const AddLoan = () => {
 
 };
 
-export default AddLoan;
+export default EditLoan;
 
 
 
