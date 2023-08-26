@@ -8,6 +8,8 @@ const Login = () => {
 
     const history = useNavigate();
 
+    const [user, setUser] = useState({});
+
     const [employee_id, setEmployee_id] = useState('');
     const [password, setPassword] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
@@ -29,9 +31,13 @@ const Login = () => {
             console.log('API response:', loginSuccess.data); // Add this line
             if (loginSuccess) {
               setSuccessMessage('Login successful. Redirecting...');
+              const getUserSuccess = await AuthenticationService.getUser(employee);
+              console.log("User Data"+getUserSuccess.data);
+              // setUser(getUserSuccess.data);
+              // console.log(user);
               setTimeout(() => {
                 history('/dashboard'); // navigates to product Component
-              }, 0);
+              }, 2);
             } else {
               setErrorMessage('Invalid employee_id or password.');
             }

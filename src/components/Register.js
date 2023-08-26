@@ -104,14 +104,6 @@ const Register = () => {
         if (!employee.doj) {
             validationErrors.doj = 'Date of Joining is required.';
         }
-
-        // if (!employee.phoneNo) {
-        //     validationErrors.phoneNo = 'Phone number is required.';
-        // } else if (!/^\d{10}$/.test(employee.phoneNo)) {
-        //     validationErrors.phoneNo = 'Invalid phone number. Please enter a 10-digit number.';
-        // }
-
-
         return validationErrors;
     };
 

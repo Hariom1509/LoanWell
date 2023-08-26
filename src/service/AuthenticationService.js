@@ -56,6 +56,24 @@ class AuthenticationService{
         }
     }
 
+    static async getUser(employee) {
+      try {
+        const response = await axios.get('http://localhost:8085/lms/api/employees/'+employee.employee_id,employee.employee_id);
+        console.log('SAPI response:', response.data +"Hello"+response.data.success); 
+        if (response.data) {
+            console.log("Employee Name"+response.data.employee_name);
+            // Call the setSessionAttribute method to store the session token or user info
+            // this.setSessionAttribute('sessionToken', response.data.sessionToken); // Adjust as needed
+            return response.data; // Return true for successful login
+        } else {
+            return false; // Return false for unsuccessful login
+        }
+        } catch (error) {
+        console.error('Login error', error);
+        throw new Error('An error occurred during login.');
+        }
+    }
+
 }
 // Create a Object
 export default AuthenticationService;
