@@ -24,11 +24,12 @@ const Sidebar = () =>{
             <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     {userType === 'admin' && <li>
-                        <Link className="nav-link px-0 align-middle" to='/'>
-                            <i class="fs-4 bi-house"></i>
-                            <span class="ms-1 d-none d-sm-inline">Home</span>
-                        </Link>
-                    </li>}
+                            <Link className="nav-link px-0 align-middle" style={{color:'white'}} to='/'>
+                                <i class="fs-4 bi-coin"></i>
+                                <span class="ms-2 d-none d-lg-inline">LoanWell</span>
+                            </Link>
+                        </li>
+                    }
                     {userType === 'admin' && <li>
                         <Link className="nav-link px-0 align-middle" to='/dashboard'>
                             <i class="fs-4 bi-speedometer2"></i>
