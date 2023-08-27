@@ -42,7 +42,7 @@ const ViewUserLoans = () => {
 
             <table class="table-primary">
             <tr class="table-primary">
-            <td class="table-primary"><b>Employee id:</b> uid</td>
+            <td class="table-primary"><b>Employee id:</b> {user}</td>
             <td class="table-primary"><b>Designation:</b> userDesignation</td>
             <td class="table-primary"><b>Department:</b> userDepartment</td>
             </tr>
@@ -62,10 +62,10 @@ const ViewUserLoans = () => {
             <tbody>
                 {loans.map(employee => {
                     return(
-                    <tr key={employee.issue_id}>
-                        <th scope="row">{employee.issue_id}</th>
+                    <tr key={employee.loan_id}>
+                        <th scope="row">{employee.loan_id}</th>
                         <td>{employee.loan_type}</td>
-                        <td>{employee.duartion_in_years}</td>
+                        <td>{employee.duration_in_years}</td>
                         <td>{employee.card_issue_date}</td>
                     </tr>
                     )

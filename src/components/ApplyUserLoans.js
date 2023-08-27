@@ -9,18 +9,17 @@ const ApplyUserLoans = () => {
 
     const [employee_id, setEmployee_id] = useState('');
     const [item_category, setItem_category] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
-    const [details, setDetails] = useState('');
+    const [item_description, setItem_description] = useState('');
+    const [item_value, setItem_value] = useState('');
+    const [item_make, setItem_make] = useState('');
+    const [duration_in_years, setDuration_in_years] = useState('');
     const [isPending, setIsPending] = useState(false);
     const history = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const contactFormSubmit = { employee_id, item_category, email, message, details };
+        const contactFormSubmit = { employee_id, item_category, item_make, item_description, item_value, duration_in_years };
         console.log(contactFormSubmit);
-
-
 
         setIsPending(true);
         fetch('http://localhost:8085/lms/api/employees/'+employee_id+'/applyloan', {
@@ -72,29 +71,39 @@ const ApplyUserLoans = () => {
                 </select>
                 {/* dropdown1 ={this.state.dropdown1} */}
                 <label htmlFor="">Item Description</label>
-                <input
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <label htmlFor="">Item value</label>
                 <input type="text"
                     required
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
+                    value={item_description}
+                    onChange={(e) => setItem_description(e.target.value)}
+                />
+                <label htmlFor="">Item value</label>
+                <input type="number"
+                    required
+                    value={item_value}
+                    onChange={(e) => setItem_value(e.target.value)}
                 />
                 <label htmlFor="">Item Make</label>
                 {item_category!==''?
-                 <select required >
+                 <select required onChange={(e)=>setItem_make(e.target.value)}>
                     { makeForType.filter(function(el){return el.type === item_category})[0].make.map(items => { 
                         return <option value={items}>
                             {items}</option>;
                         })
                     }
                 </select> : "hello"}
+
+                <label htmlFor="">Loan Duration in Years</label>
+                <input type="number"
+                    
+                    value={duration_in_years}
+                    onChange={(e) => setDuration_in_years(e.target.value)}
+                    min="1"
+                    max='5'
+                />
+
                 {/* <textarea
-                    value={details}
-                    onChange={(e) => setDetails(e.target.value)}
+                    value={item_make}
+                    onChange={(e) => setItem_make(e.target.value)}
                 ></textarea> */}
                 {!isPending && <button>Apply Loan</button>}
                 {isPending && <button disabled>Sending...</button>}
