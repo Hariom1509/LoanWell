@@ -1,7 +1,50 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React,{useState,useEffect} from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const EditCustData = () => {
+
+    const [allEmployees,setAllEmployees] = useState([]);
+
+    const history = useNavigate();
+    useEffect(() => {
+        fetchItems();
+    },[]);
+
+    const fetchItems = () =>{
+        try {
+            fetch('http://localhost:8085/lms/api/employees')
+            .then(res => {
+                console.log(res);
+                if(!res.ok){
+                    throw Error('could not fetch the data for that resource');
+                }
+                return res.json()
+            })
+            .then(data =>{
+                console.log(data);
+                setAllEmployees(data);
+            })
+        } catch (error) {
+            alert('An error occurred during fetching employess.');  
+        }
+    }
+    const editEmployee = (id) => {
+        history(`/editEmployee/${id}`);
+    }
+    const deleteEmployee = (id) => {
+        try {
+            fetch('http://localhost:8085/lms/api/employees/'+id, {
+                method: 'DELETE',
+                headers: { "Content-Type": "application/json" }
+            }).then(() => {
+                console.log('Employee Deleted');
+                fetchItems();
+                alert("Employee Deleted");
+            })
+        } catch (error) {
+            alert('An error occurred during deleting employee.');  
+        }
+    };
 
     return(
         <div className='container'>
@@ -27,28 +70,22 @@ const EditCustData = () => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Ram</td>
-                    <td>Manager</td>
-                    <td>Finance</td>
-                    <td>Male</td>
-                    <td>01/01/1999</td>
-                    <td>01/01/2021</td>
-                    <td><button type="button" class="btn btn-warning btn-sm">Edit</button></td>
-                    <td><button type="button" class="btn btn-danger btn-sm">Delete</button></td>
-                </tr>
-                <tr>
-                <th scope="row">2</th>
-                    <td>Anita</td>
-                    <td>Executive</td>
-                    <td>Finance</td>
-                    <td>Female</td>
-                    <td>01/01/1999</td>
-                    <td>01/01/2021</td>
-                    <td><button type="button" class="btn btn-warning btn-sm">Edit</button></td>
-                    <td><button type="button" class="btn btn-danger btn-sm">Delete</button></td>
-                </tr>
+                {allEmployees.map(employee => {
+                    return(
+                    <tr key={employee.employee_id}>
+                        <th scope="row">{employee.employee_id}</th>
+                        <td>{employee.employee_name}</td>
+                        <td>{employee.designation}</td>
+                        <td>{employee.department}</td>
+                        <td>{employee.gender}</td>
+                        <td>{employee.dob}</td>
+                        <td>{employee.doj}</td>
+                        <td><button type="button" class="btn btn-warning btn-sm" onClick={() => editEmployee(employee.employee_id)}> Edit</button></td>
+                        <td><button type="button" class="btn btn-danger btn-sm" onClick={() => deleteEmployee(employee.employee_id)}>Delete</button></td>
+                    </tr>
+                    )
+                })}
+                
             </tbody>
             </table>
             </div>

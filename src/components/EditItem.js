@@ -15,6 +15,7 @@ const EditItem = () => {
     const [itemDescription, setItemDescription] = useState('');
     const [itemValue, setItemValue] = useState(0);
     const [itemMake, setItemMake] = useState('');
+    const [itemId,setItemId] = useState(0);
 
     const [errors, setErrors] = useState({});
 
@@ -87,6 +88,7 @@ const EditItem = () => {
                     setItemDescription(data.item_description);
                     setItemMake(data.item_make);
                     setItemValue(data.item_valuation);
+                    setItemId(data.item_id);
                 })
             } catch (error) {
                 alert('An error occurred during fetching items.');  
@@ -99,6 +101,13 @@ const EditItem = () => {
         <div className="create">
             <h3>Edit Item Id: {id["id"]}</h3>
             <form action="" onSubmit={handleSubmit}>
+
+                <label>Item Id:</label>
+                <input
+                    disabled
+                    type="text"
+                    value={itemId}
+                />
 
                 <label htmlFor="">Item Category</label>
                 <select  onChange={(e) => setItemCategory(e.target.value)}>

@@ -10,6 +10,7 @@ const EditLoan = () => {
 
     const [loanType, setLoanType] = useState('');
     const [loanDuration, setLoanDuration] = useState('');
+    const [loanId,setLoanId] = useState(0);
       
     const [isPending, setIsPending] = useState(false);
     const history = useNavigate();
@@ -60,6 +61,7 @@ const EditLoan = () => {
             .then(data =>{
                 setLoanType(data.loan_type);
                 setLoanDuration(data.duration_in_years);
+                setLoanId(data.loan_id);
                 
             })
         } catch (error) {
@@ -87,6 +89,13 @@ const EditLoan = () => {
             <h2>Add Loan Master Data Details</h2>
             <form action="" onSubmit={handleSubmit}>
                 
+                <label>Loan Id:</label>
+                <input
+                    disabled
+                    type="text"
+                    value={loanId}
+                />
+
                 <label htmlFor="">Loan Type</label>
                 <select  onChange={(e)=>setLoanType(e.target.value)}>
                     { loanCardData.map(items => { 
