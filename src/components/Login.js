@@ -33,6 +33,7 @@ const Login = () => {
               setSuccessMessage('Login successful. Redirecting...');
               const getUserSuccess = await AuthenticationService.getUser(employee);
               console.log("User Data"+getUserSuccess.data);
+              localStorage.setItem('id', employee_id);
               // setUser(getUserSuccess.data);
               // console.log(user);
               setTimeout(() => {

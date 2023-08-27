@@ -7,8 +7,8 @@ import makeForType from "../data/makeForType.json";
 
 const ApplyUserLoans = () => {
 
-    const [firstname, setFirstname] = useState('');
-    const [lastname, setLastname] = useState('');
+    const [employee_id, setEmployee_id] = useState('');
+    const [item_category, setItem_category] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [details, setDetails] = useState('');
@@ -17,18 +17,23 @@ const ApplyUserLoans = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const contactFormSubmit = { firstname, lastname, email, message, details };
+        const contactFormSubmit = { employee_id, item_category, email, message, details };
         console.log(contactFormSubmit);
 
+
+
         setIsPending(true);
-        fetch('https://krishi-charcha.herokuapp.com/addInquiry', {
+        fetch('http://localhost:8085/lms/api/employees/'+employee_id+'/applyloan', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(contactFormSubmit)
         }).then(() => {
-            console.log('new inquiry added');
-            alert("Thank You! You will recieve email in next 24 hours");
+            console.log('new loan added');
+            alert("Thank You for applying for a loan");
             setIsPending(false);
+            setTimeout(() => {
+                history('/dashboard');
+            },0);
             // history.go(-1);
             // history.push('/');
         })
@@ -38,8 +43,8 @@ const ApplyUserLoans = () => {
     }
 
     useEffect(() => {
-        lastname===''?setLastname(loanCardData[0].loan_type):setLastname(lastname);
-      },[lastname]);
+        item_category===''?setItem_category(loanCardData[0].loan_type):setItem_category(item_category);
+      },[item_category]);
 
 
     return (
@@ -49,16 +54,16 @@ const ApplyUserLoans = () => {
                 <label htmlFor="">Employee id</label>
                 <input type="text"
                     required
-                    value={firstname}
-                    onChange={(e) => setFirstname(e.target.value)}
+                    value={employee_id}
+                    onChange={(e) => setEmployee_id(e.target.value)}
                 />
                 <label htmlFor="">Item Category</label>
                 {/* <input type="text"
                     required
-                    value={lastname}
-                    onChange={(e) => setLastname(e.target.value)}
+                    value={item_category}
+                    onChange={(e) => setItem_category(e.target.value)}
                 /> */}
-                <select required onChange={(e)=>setLastname(e.target.value)}>
+                <select required onChange={(e)=>setItem_category(e.target.value)}>
                     { loanCardData.map(items => { 
                         return <option value={items.loan_type}>
                             {items.loan_type}</option>;
@@ -67,7 +72,7 @@ const ApplyUserLoans = () => {
                 </select>
                 {/* dropdown1 ={this.state.dropdown1} */}
                 <label htmlFor="">Item Description</label>
-                <input type="email"
+                <input
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -79,9 +84,9 @@ const ApplyUserLoans = () => {
                     onChange={(e) => setMessage(e.target.value)}
                 />
                 <label htmlFor="">Item Make</label>
-                {lastname!==''?
+                {item_category!==''?
                  <select required >
-                    { makeForType.filter(function(el){return el.type === lastname})[0].make.map(items => { 
+                    { makeForType.filter(function(el){return el.type === item_category})[0].make.map(items => { 
                         return <option value={items}>
                             {items}</option>;
                         })
@@ -98,7 +103,7 @@ const ApplyUserLoans = () => {
                 <p>{author}</p> */}
                 <div>
                     {console.log(makeForType.filter(function(el){return el.type === "Furniture"})[0].make)}
-                    {console.log(lastname)}
+                    {console.log(item_category)}
                 </div>
             </form>
 

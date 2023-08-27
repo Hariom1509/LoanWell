@@ -1,6 +1,36 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
 const ViewUserItems= () => {
+
+    const [items, setItems] = useState([]);
+    const [user, setUser] = useState(localStorage.getItem('id'));
+
+    useEffect(() => {
+        // setUser(localStorage.getItem('id'));
+        fetchItems();
+    },[]);
+
+    console.log(user);
+
+    const fetchItems = () =>{
+        try {
+            fetch('http://localhost:8085/lms/api/employees/'+user+'/viewmyitems')
+            .then(res => {
+                console.log(res);
+                if(!res.ok){
+                    throw Error('could not fetch the data for that resource');
+                }
+                return res.json()
+            })
+            .then(data =>{
+                console.log(data);
+                setItems(data);
+            })
+        } catch (error) {
+            alert('An error occurred during fetching employess.');  
+        }
+    }
 
     return(
         <div className="container">
@@ -30,20 +60,18 @@ const ViewUserItems= () => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Table</td>
-                    <td>Wooden</td>
-                    <td>Furniture</td>
-                    <td>5000</td>
-                </tr>
-                <tr>
-                <th scope="row">1</th>
-                    <td>Tea Set</td>
-                    <td>Glass</td>
-                    <td>Crockery</td>
-                    <td>2000</td>
-                </tr>
+                {items.map(employee => {
+                    return(
+                    <tr key={employee.issue_id}>
+                        <th scope="row">{employee.issue_id}</th>
+                        <td>{employee.item_description}</td>
+                        <td>{employee.item_make}</td>
+                        <td>{employee.item_category}</td>
+                        <td>{employee.item_valuation}</td>
+                    </tr>
+                    )
+                })}
+                
             </tbody>
             </table>
         </div>
