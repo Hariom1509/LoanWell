@@ -30,10 +30,10 @@ const Login = () => {
             const loginSuccess = await AuthenticationService.login(employee);
             console.log('API response:', loginSuccess.data); // Add this line
             if (loginSuccess) {
+              localStorage.setItem('role','cust')
               setSuccessMessage('Login successful. Redirecting...');
               const getUserSuccess = await AuthenticationService.getUser(employee);
               console.log("User Data"+getUserSuccess.data);
-              localStorage.setItem('id', employee_id);
               // setUser(getUserSuccess.data);
               // console.log(user);
               setTimeout(() => {

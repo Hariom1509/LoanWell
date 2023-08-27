@@ -40,6 +40,8 @@ const EditCustData = () => {
                 console.log('Employee Deleted');
                 fetchItems();
                 alert("Employee Deleted");
+                // window.location.reload();
+    
             })
         } catch (error) {
             alert('An error occurred during deleting employee.');  

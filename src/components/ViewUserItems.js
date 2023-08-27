@@ -41,9 +41,9 @@ const ViewUserItems= () => {
 
             <table class="table-primary">
             <tr class="table-primary">
-            <td class="table-primary"><b>Employee id:</b> uid</td>
-            <td class="table-primary"><b>Designation:</b> userDesignation</td>
-            <td class="table-primary"><b>Department:</b> userDepartment</td>
+            <td class="table-primary"><b>Employee id:</b> {localStorage.getItem('id')}</td>
+            <td class="table-primary"><b>Designation:</b> {localStorage.getItem('design')}</td>
+            <td class="table-primary"><b>Department:</b> {localStorage.getItem('dept')}</td>
             </tr>
             </table>
 

@@ -62,6 +62,11 @@ class AuthenticationService{
         console.log('SAPI response:', response.data +"Hello"+response.data.success); 
         if (response.data) {
             console.log("Employee Name"+response.data.employee_name);
+            console.log(response.data.employee_id+response.data.employee_name+response.data.department+response.data.designation)
+              localStorage.setItem('id', response.data.employee_id);
+              localStorage.setItem('name', response.data.employee_name);
+              localStorage.setItem('dept', response.data.department);
+              localStorage.setItem('design', response.data.designation);
             // Call the setSessionAttribute method to store the session token or user info
             // this.setSessionAttribute('sessionToken', response.data.sessionToken); // Adjust as needed
             return response.data; // Return true for successful login

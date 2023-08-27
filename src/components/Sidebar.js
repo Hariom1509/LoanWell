@@ -1,12 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Sidebar = () =>{
 
     const[userType, setUserType] = useState("admin");
 
+    useEffect(() => {
+        localStorage.getItem('name');
+    },[])
+
     //setUserType('none');
+
+    // const handleLogout = async() => {
+    //     localStorage.clear();
+    //     localStorage.setItem('role','none');
+    // }
 
     return(
         <>
@@ -64,20 +73,20 @@ const Sidebar = () =>{
                     </li>}
                 </ul>
 
-                <hr/>
+                {/* <hr/>
                 {userType!== 'none' &&<div className="dropdown pb-4">
                     <p class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle" />
                         
-                        <span class="d-none d-sm-inline mx-1">Hariom</span>
+                        <span class="d-none d-sm-inline mx-1">{localStorage.getItem('name')}</span>
                     </p>
                     
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                     <li>
-                        <Link className="dropdown-item" to='/logout'>Logout</Link>
+                        <Link className="dropdown-item" to='/'>Logout</Link>
                     </li>
                     </ul>
-                </div>}
+                </div>} */}
             </div>
         </div>
 

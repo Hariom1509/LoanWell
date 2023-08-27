@@ -9,7 +9,7 @@ const UserDashboard = () => {
 
     return(
         <div className="container">
-            <span className='head'><h2>User Dashboard</h2></span>
+            <span className='head'><h2>Dashboard for {localStorage.getItem('name')}</h2></span>
             <br />
             <br />
             <div class="d-grid gap-3 col-6 mx-auto">

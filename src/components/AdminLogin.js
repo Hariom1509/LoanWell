@@ -28,6 +28,7 @@ const AdminLogin = () => {
             const loginSuccess = await AuthenticationService.login(employee);
             console.log('API response:', loginSuccess.data); // Add this line
             if (loginSuccess) {
+              localStorage.setItem('role','admin')
               setSuccessMessage('Login successful. Redirecting...');
               setTimeout(() => {
                 history('/admin-dashboard'); // navigates to product Component
