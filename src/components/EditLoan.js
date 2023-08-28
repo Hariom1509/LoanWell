@@ -2,6 +2,7 @@ import React from "react";
 import { useState,useEffect } from 'react';
 import { useNavigate,useParams } from 'react-router-dom';
 import loanCardData from "../data/loanCard.json";
+import AuthenticationService from "../service/AuthenticationService";
 
 import '../style/AddItem.css';
 
@@ -49,23 +50,30 @@ const EditLoan = () => {
     }
 
     useEffect(() => {
-        try {
-            fetch('http://localhost:8085/lms/api/loans/'+id["id"])
-            .then(res => {
-                console.log(res);
-                if(!res.ok){
-                    throw Error('could not fetch the data for that resource');
-                }
-                return res.json()
-            })
-            .then(data =>{
-                setLoanType(data.loan_type);
-                setLoanDuration(data.duration_in_years);
-                setLoanId(data.loan_id);
-                
-            })
-        } catch (error) {
-            alert('An error occurred during fetching items.');  
+
+        if(!AuthenticationService.isLoggedIn()){
+            history('/');
+        } else {
+            sessionStorage.getItem('name');
+            sessionStorage.getItem('id');
+            try {
+                fetch('http://localhost:8085/lms/api/loans/'+id["id"])
+                .then(res => {
+                    console.log(res);
+                    if(!res.ok){
+                        throw Error('could not fetch the data for that resource');
+                    }
+                    return res.json()
+                })
+                .then(data =>{
+                    setLoanType(data.loan_type);
+                    setLoanDuration(data.duration_in_years);
+                    setLoanId(data.loan_id);
+                    
+                })
+            } catch (error) {
+                alert('An error occurred during fetching items.');  
+            }
         }
     },[]);
       

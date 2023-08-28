@@ -1,14 +1,26 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import AuthenticationService from "../service/AuthenticationService";
+import { useNavigate } from "react-router";
 
 const ViewUserItems= () => {
 
     const [items, setItems] = useState([]);
-    const [user, setUser] = useState(localStorage.getItem('id'));
+    const [user, setUser] = useState(sessionStorage.getItem('id'));
+
+    const history=useNavigate();
 
     useEffect(() => {
         // setUser(localStorage.getItem('id'));
-        fetchItems();
+
+        if(!AuthenticationService.isLoggedIn()){
+            history('/');
+        } else {
+            sessionStorage.getItem('name');
+            sessionStorage.getItem('id');
+
+            fetchItems();
+        }
     },[]);
 
     console.log(user);

@@ -29,21 +29,27 @@ const EditEmployee = () => {
 
 
     useEffect(() => {
-        try {
-            fetch('http://localhost:8085/lms/api/employees/'+id["id"])
-            .then(res => {
-                console.log(res);
-                if(!res.ok){
-                    throw Error('could not fetch the data for that resource');
-                }
-                return res.json()
-            })
-            .then(data =>{
-                setEmployee(data);
-                
-            })
-        } catch (error) {
-            alert('An error occurred during fetching employee.');  
+        if(!AuthenticationService.isLoggedIn()){
+            history('/');
+        } else {
+            sessionStorage.getItem('name');
+            sessionStorage.getItem('id');
+            try {
+                fetch('http://localhost:8085/lms/api/employees/'+id["id"])
+                .then(res => {
+                    console.log(res);
+                    if(!res.ok){
+                        throw Error('could not fetch the data for that resource');
+                    }
+                    return res.json()
+                })
+                .then(data =>{
+                    setEmployee(data);
+                    
+                })
+            } catch (error) {
+                alert('An error occurred during fetching employee.');  
+            }
         }
     },[]);
 

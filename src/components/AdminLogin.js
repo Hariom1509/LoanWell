@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import AuthenticationService from "../service/AuthenticationService";
 import '../style/Login.css';
-import { Link } from "react-router-dom";
 
 const AdminLogin = () => {
 
@@ -28,8 +27,10 @@ const AdminLogin = () => {
             const loginSuccess = await AuthenticationService.login(employee);
             console.log('API response:', loginSuccess.data); // Add this line
             if (loginSuccess) {
-              localStorage.setItem('role','admin')
+              sessionStorage.setItem('role','admin')
               setSuccessMessage('Login successful. Redirecting...');
+              const getUserSuccess = await AuthenticationService.getUser(employee);
+              console.log("User Data"+getUserSuccess.data);
               setTimeout(() => {
                 history('/admin-dashboard'); // navigates to product Component
               }, 0);

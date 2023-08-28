@@ -30,7 +30,7 @@ const Login = () => {
             const loginSuccess = await AuthenticationService.login(employee);
             console.log('API response:', loginSuccess.data); // Add this line
             if (loginSuccess) {
-              localStorage.setItem('role','cust')
+              localStorage.setItem('role', 'cust')
               setSuccessMessage('Login successful. Redirecting...');
               const getUserSuccess = await AuthenticationService.getUser(employee);
               console.log("User Data"+getUserSuccess.data);
@@ -66,14 +66,14 @@ const Login = () => {
             <br></br>
             <div className="form-group d-grid gap-2 col-6 mx-auto">
               <button className="btn btn-success" onClick={handleLogin}>Login</button>
+              <br />
+              <h5><Link to = "/admin-login" style={{textDecoration:'none', paddingLeft:"2.5em"}}>Log in as Admin</Link></h5>
             </div>
-            <br/>
+            {/* <br/>
             <br />
-            <h5>New User?&nbsp;<Link to = "/register">Register</Link></h5>
+            <h5>New User?&nbsp;<Link to = "/register">Register</Link></h5> */}
 
             
-            <br />
-            <h5><Link to = "/admin-login">Log in as Admin</Link></h5>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             {successMessage && <p className="success-message">{successMessage}</p>}
         

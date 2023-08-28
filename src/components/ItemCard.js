@@ -2,6 +2,7 @@ import React,{useState, useEffect} from "react";
 import itemCard from "../data/itemCard.json";
 import useFetch from "../service/useFetch";
 import { useNavigate } from "react-router-dom";
+import AuthenticationService from "../service/AuthenticationService";
 
 
 const ItemCard = () => {
@@ -11,7 +12,13 @@ const ItemCard = () => {
     const history = useNavigate();
 
     useEffect(() => {  // reactHook - Runs only once on the firts Render
-        fetchItems();
+        if(!AuthenticationService.isLoggedIn()){
+            history('/');
+        } else {
+            sessionStorage.getItem('name');
+            sessionStorage.getItem('id');
+            fetchItems();
+        }
     }, []);
 
     const fetchItems = () =>{

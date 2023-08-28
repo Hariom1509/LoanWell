@@ -63,10 +63,10 @@ class AuthenticationService{
         if (response.data) {
             console.log("Employee Name"+response.data.employee_name);
             console.log(response.data.employee_id+response.data.employee_name+response.data.department+response.data.designation)
-              localStorage.setItem('id', response.data.employee_id);
-              localStorage.setItem('name', response.data.employee_name);
-              localStorage.setItem('dept', response.data.department);
-              localStorage.setItem('design', response.data.designation);
+              sessionStorage.setItem('id', response.data.employee_id);
+              sessionStorage.setItem('name', response.data.employee_name);
+              sessionStorage.setItem('dept', response.data.department);
+              sessionStorage.setItem('design', response.data.designation);
             // Call the setSessionAttribute method to store the session token or user info
             // this.setSessionAttribute('sessionToken', response.data.sessionToken); // Adjust as needed
             return response.data; // Return true for successful login
@@ -78,6 +78,12 @@ class AuthenticationService{
         throw new Error('An error occurred during login.');
         }
     }
+
+    static isLoggedIn() {
+      let user = sessionStorage.getItem('id')
+      if (user === null) return false
+      return true
+  }
 
 }
 // Create a Object

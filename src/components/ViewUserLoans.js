@@ -1,13 +1,25 @@
 import React, { useEffect, useState } from "react";
+import AuthenticationService from "../service/AuthenticationService";
+import { useNavigate } from "react-router";
 
 const ViewUserLoans = () => {
 
     const [loans, setLoans] = useState([]);
-    const [user, setUser] = useState(localStorage.getItem('id'));
+    const [user, setUser] = useState(sessionStorage.getItem('id'));
+
+    const history=useNavigate();
 
     useEffect(() => {
         // setUser(localStorage.getItem('id'));
-        fetchLoans();
+
+        if(!AuthenticationService.isLoggedIn()){
+            history('/');
+        } else {
+            sessionStorage.getItem('name');
+            sessionStorage.getItem('id');
+
+            fetchLoans();
+        }
     },[]);
 
     console.log(user);
@@ -42,9 +54,9 @@ const ViewUserLoans = () => {
 
             <table class="table-primary">
             <tr class="table-primary">
-            <td class="table-primary"><b>Employee id:</b> {localStorage.getItem('id')}</td>
-            <td class="table-primary"><b>Designation:</b> {localStorage.getItem('design')}</td>
-            <td class="table-primary"><b>Department:</b> {localStorage.getItem('dept')}</td>
+            <td class="table-primary"><b>Employee id:</b> {sessionStorage.getItem('id')}</td>
+            <td class="table-primary"><b>Designation:</b> {sessionStorage.getItem('design')}</td>
+            <td class="table-primary"><b>Department:</b> {sessionStorage.getItem('dept')}</td>
             </tr>
             </table>
 

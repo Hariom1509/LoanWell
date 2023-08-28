@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate,useParams } from 'react-router-dom';
 import makeForType from "../data/makeForType.json";
 import loanCardData from "../data/loanCard.json";
+import AuthenticationService from "../service/AuthenticationService";
 
 import '../style/EditItem.css';
 
@@ -23,11 +24,21 @@ const EditItem = () => {
     const [isPending, setIsPending] = useState(false);
     const history = useNavigate();
 
+    useEffect(() => {
+
+        if(!AuthenticationService.isLoggedIn()){
+            history('/');
+        } else {
+            sessionStorage.getItem('name');
+            sessionStorage.getItem('id');
+        }
+    },[])
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setIsPending(true);
         const validationErrors = validateForm();
-        if (Object.keys(validationErrors).length == 0) {
+        if (Object.keys(validationErrors).length === 0) {
             const addItemForm = { item_category: itemCategory, item_description: itemDescription, item_valuation: itemValue, item_make: itemMake };
             console.log(addItemForm);
             try {

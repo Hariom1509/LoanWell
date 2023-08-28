@@ -1,15 +1,26 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { UserState } from "./UserState";
-import { UserContext } from "./UserState";
+import { useNavigate } from "react-router-dom";
+import AuthenticationService from "../service/AuthenticationService";
 
 const UserDashboard = () => {
 
+    const history = useNavigate();
+
+    useEffect(() => {
+
+        if(!AuthenticationService.isLoggedIn()){
+            history('/');
+        } else {
+            sessionStorage.getItem('name');
+            sessionStorage.getItem('id');
+        }
+    },[])
+
     return(
         <div className="container">
-            <span className='head'><h2>Dashboard for {localStorage.getItem('name')}</h2></span>
+            <span className='head'><h2>Dashboard for {sessionStorage.getItem('name')}</h2></span>
             <br />
             <br />
             <div class="d-grid gap-3 col-6 mx-auto">

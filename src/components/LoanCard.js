@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import loanCard from "../data/loanCard.json";
 import { useNavigate } from "react-router-dom";
+import AuthenticationService from "../service/AuthenticationService";
 
 
 const LoanCard = () => {
@@ -10,7 +11,15 @@ const LoanCard = () => {
     const history=useNavigate();
 
     useEffect(() => {
-        fetchItems();
+
+        if(!AuthenticationService.isLoggedIn()){
+            history('/');
+        } else {
+            sessionStorage.getItem('name');
+            sessionStorage.getItem('id');
+            
+            fetchItems();
+        }
     },[]);
 
     const fetchItems = () =>{

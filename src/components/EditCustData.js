@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
+import AuthenticationService from "../service/AuthenticationService";
 
 const EditCustData = () => {
 
@@ -7,7 +8,13 @@ const EditCustData = () => {
 
     const history = useNavigate();
     useEffect(() => {
-        fetchItems();
+        if(!AuthenticationService.isLoggedIn()){
+            history('/');
+        } else {
+            sessionStorage.getItem('name');
+            sessionStorage.getItem('id');
+            fetchItems();
+        }
     },[]);
 
     const fetchItems = () =>{
