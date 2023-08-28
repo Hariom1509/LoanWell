@@ -24,7 +24,7 @@ import EditEmployee from './components/EditEmployee';
 function App() {
   return (
 
-    <div className="container-fluid">
+    <div className="container-fluid" style={{overflowX:'hidden', overflowY:'hidden'}}>
     <div class="row flex-nowrap">
     {/* <video style={{diplay:'flex', width: '90%', transform: 'rotate (-90deg)', position: 'absolute',zIndex:"-1"}} autoPlay loop muted>
                 <source src={bgVideo} type='video/mp4' />
