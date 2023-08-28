@@ -65,7 +65,7 @@ const ViewUserLoans = () => {
             <table class="table table-dark table-striped">
             <thead>
                 <tr>
-                <th scope="col">Issue Id</th>
+                <th scope="col">Loan Id</th>
                 <th scope="col">Loan Type</th>
                 <th scope="col">Duration</th>
                 <th scope="col">Card Issue Date</th>

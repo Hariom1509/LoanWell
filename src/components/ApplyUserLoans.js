@@ -7,7 +7,7 @@ import { toBeEmptyDOMElement } from "@testing-library/jest-dom/matchers";
 const ApplyUserLoans = () => {
 
 
-    const [employee_id, setEmployee_id] = useState(localStorage.getItem('id'));
+    const [employee_id, setEmployee_id] = useState(sessionStorage.getItem('id'));
     const [allLoans,setAllLoans] = useState([]);
     const [allItems,setAllItems] = useState([]);
 
@@ -33,7 +33,7 @@ const ApplyUserLoans = () => {
         const validationErrors = validateForm();
         if (Object.keys(validationErrors).length === 0) {
             let [itemValue] = allItems.filter(function(el){return el.item_category === item_category && el.item_make === item_make && el.item_description === item_description}).map(item => item.item_valuation);
-            const contactFormSubmit = { employee_id, item_category, item_make, item_description, item_value:itemValue, duration_in_years };
+            const contactFormSubmit = { employee_id, item_category, item_make, item_description, item_valuation:itemValue, duration_in_years };
             console.log(contactFormSubmit);
             try {
                     fetch('http://localhost:8085/lms/api/employees/'+employee_id+'/applyloan', {
