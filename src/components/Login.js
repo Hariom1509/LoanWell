@@ -30,7 +30,7 @@ const Login = () => {
             const loginSuccess = await AuthenticationService.login(employee);
             console.log('API response:', loginSuccess.data); // Add this line
             if (loginSuccess) {
-              localStorage.setItem('role', 'cust')
+              sessionStorage.setItem('role', 'cust')
               setSuccessMessage('Login successful. Redirecting...');
               const getUserSuccess = await AuthenticationService.getUser(employee);
               console.log("User Data"+getUserSuccess.data);
@@ -38,6 +38,7 @@ const Login = () => {
               // console.log(user);
               setTimeout(() => {
                 history('/dashboard'); // navigates to product Component
+                window.location.reload();
               }, 2);
             } else {
               setErrorMessage('Invalid employee_id or password.');

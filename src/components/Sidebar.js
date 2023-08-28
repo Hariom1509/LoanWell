@@ -6,7 +6,7 @@ import AuthenticationService from "../service/AuthenticationService";
 
 const Sidebar = () =>{
 
-    const[userType, setUserType] = useState("admin");
+    const[userType, setUserType] = useState('');
     const history = useNavigate();
 
     useEffect(() => {
@@ -16,6 +16,7 @@ const Sidebar = () =>{
             history('/');
         } else {
             setUserType(sessionStorage.getItem('role'));
+            console.log(userType);
             sessionStorage.getItem('name');
             sessionStorage.getItem('id');
         }
@@ -42,13 +43,12 @@ const Sidebar = () =>{
         <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
             <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    {<li>
+                        <li>
                             <Link className="nav-link px-0 align-middle" style={{color:'white'}} to='/'>
                                 <i class="fs-4 bi-coin"></i>
                                 <span class="ms-2 d-none d-lg-inline">LoanWell</span>
                             </Link>
                         </li>
-                    }
                     {userType === 'cust' && <li>
                         <Link className="nav-link px-0 align-middle" to='/dashboard'>
                             <i class="fs-4 bi-speedometer2"></i>

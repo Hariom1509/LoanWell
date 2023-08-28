@@ -33,6 +33,7 @@ const AdminLogin = () => {
               console.log("User Data"+getUserSuccess.data);
               setTimeout(() => {
                 history('/admin-dashboard'); // navigates to product Component
+                window.location.reload();
               }, 0);
             } else {
               setErrorMessage('Invalid employee_id or password.');
