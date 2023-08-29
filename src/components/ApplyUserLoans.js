@@ -142,9 +142,10 @@ const ApplyUserLoans = () => {
 
             <h2 className="col-9 mx-auto">Select Product and Apply for Loan</h2>
             <form action="" onSubmit={handleSubmit}>
-                <div className="form-group col-9 mx-auto">
+                <div className="form-group col-8 mx-auto">
                 <label htmlFor="">Employee id</label>
                 <input type="text"
+                    className="form-control"
                     required
                     disabled
                     value={employee_id}
@@ -152,7 +153,7 @@ const ApplyUserLoans = () => {
                 />
 
                 <label htmlFor="">Item Category</label>
-                <select required onChange={(e)=>setItem_category(e.target.value)}>
+                <select className="form-control" required onChange={(e)=>setItem_category(e.target.value)}>
                     <option>Select Category</option>
                     { allLoanCategories.map(category => { 
                         return <option value={category}>
@@ -163,7 +164,7 @@ const ApplyUserLoans = () => {
                 {errors.item_category && <p className="error-message">{errors.item_category}</p>}
 
                 <label htmlFor="">Item Make</label>
-                 <select required onChange={(e)=>setItem_make(e.target.value)}>
+                 <select className="form-control" required onChange={(e)=>setItem_make(e.target.value)}>
                     <option>Select Item Make</option>
                     { item_category && allMake.filter(function(el){return el.item_category === item_category})[0].item_makes.map(make => { 
                                 return <option value={make}>
@@ -174,7 +175,7 @@ const ApplyUserLoans = () => {
                 {errors.item_make && <p className="error-message">{errors.item_make}</p>}
 
                 <label htmlFor="">Item Description</label>
-                <select required onChange={(e) => setItem_description(e.target.value)}>
+                <select className="form-control" required onChange={(e) => setItem_description(e.target.value)}>
                     <option>Select Item Description</option>
                     { item_make && allItems.filter(function(el){return el.item_category === item_category && el.item_make === item_make}).map(item => { 
                                 return <option value={item.item_description}>
@@ -186,7 +187,7 @@ const ApplyUserLoans = () => {
 
 
                 <label htmlFor="">Loan Duration in Years</label>
-                <select required onChange={(e) => setDuration_in_years(e.target.value)}>
+                <select className="form-control" required onChange={(e) => setDuration_in_years(e.target.value)}>
                     <option>Select Duration</option>
                     {item_category &&
                         allLoans.filter(function(el){return el.loan_type === item_category}).map(loan => {
@@ -202,6 +203,7 @@ const ApplyUserLoans = () => {
                 <label htmlFor="">Item value</label>
                 
                 <input type="number"
+                    className="form-control"
                     required
                     disabled
                     value={

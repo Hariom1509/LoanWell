@@ -80,7 +80,7 @@ const AddItem = () => {
             <form action="" onSubmit={handleSubmit}>
             <div className="form-group col-9 mx-auto">
                 <label htmlFor="">Item Category</label>
-                <select  onChange={(e) => setItemCategory(e.target.value)}>
+                <select className="form-control" onChange={(e) => setItemCategory(e.target.value)}>
                     {loanCardData.map(items => {
                         return <option value={items.loan_type}>
                             {items.loan_type}</option>;
@@ -100,7 +100,7 @@ const AddItem = () => {
                 <label htmlFor="">Item value</label>
                 <input type="number"
                     min="0"
-                    
+                    className="form-control"
                     value={itemValue}
                     onChange={(e) => setItemValue(e.target.value)}
                 />
@@ -110,7 +110,7 @@ const AddItem = () => {
                 {itemCategory && <>
 
 
-                    <select  onChange={(e) => setItemMake(e.target.value)}>
+                    <select className="form-control" onChange={(e) => setItemMake(e.target.value)}>
                         <option>Select Value</option>
                         {makeForType.filter(function (el) { return el.type === itemCategory })[0].make.map(items => {
                             return <option value={items}>

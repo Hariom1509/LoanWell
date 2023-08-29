@@ -94,18 +94,19 @@ const EditLoan = () => {
 
     return (
         <div className="create">
-            <h2 className='head col-6 mx-auto'>Add Loan Master Data Details</h2>
+            <h2 className='head col-6 mx-auto'>Edit Loan Id: {id["id"]}</h2>
             <form action="" onSubmit={handleSubmit}>
                 <div className="form-group d-grid gap-2 col-6 mx-auto">
                 <label>Loan Id:</label>
                 <input
+                    className="form-control"
                     disabled
                     type="text"
                     value={loanId}
                 />
 
                 <label htmlFor="">Loan Type</label>
-                <select  onChange={(e)=>setLoanType(e.target.value)}>
+                <select  className="form-control" onChange={(e)=>setLoanType(e.target.value)}>
                     { loanCardData.map(items => { 
                         return <option  selected={items.loan_type===loanType} value={items.loan_type}>
                             {items.loan_type}</option>;
@@ -116,7 +117,7 @@ const EditLoan = () => {
 
                 <label htmlFor="">Loan Duration in Years</label>
                 <input type="number"
-                    
+                    className="form-control"
                     value={loanDuration}
                     onChange={(e) => setLoanDuration(e.target.value)}
                     min="1"

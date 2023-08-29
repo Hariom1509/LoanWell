@@ -70,7 +70,7 @@ const AddLoan = () => {
             <form action="" onSubmit={handleSubmit}>
             <div className="form-group col-9 mx-auto">
                 <label htmlFor="">Loan Type</label>
-                <select  onChange={(e)=>setLoanType(e.target.value)}>
+                <select className="form-control" onChange={(e)=>setLoanType(e.target.value)}>
                     { loanCardData.map(items => { 
                         return <option value={items.loan_type}>
                             {items.loan_type}</option>;
@@ -79,9 +79,9 @@ const AddLoan = () => {
                 </select>
                 {errors.loanType && <p className="error-message">{errors.loanType}</p>}
 
-                <label htmlFor="">Loan Duration in Years</label>
+                <label htmlFor="">Loan Duration (in Years)</label>
                 <input type="number"
-                    
+                    className="form-control"
                     value={loanDuration}
                     onChange={(e) => setLoanDuration(e.target.value)}
                     min="1"
