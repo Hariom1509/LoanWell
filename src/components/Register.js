@@ -55,7 +55,7 @@ const Register = () => {
                 // Clear form or navigate to another page
                 alert("Registration Successfull");
                 setTimeout(() => {
-                    history('/login');
+                    history('/edit-cust-data');
                 },0);
             } catch (error) {
                 console.error('Registration error', error);
@@ -69,9 +69,9 @@ const Register = () => {
     const validateForm = () => {
         let validationErrors = {};
 
-        // if (!employee.employee_id) {
-        //     validationErrors.employee_id = 'Emp ID is required.';
-        // }
+        if (!employee.employee_id) {
+            validationErrors.employee_id = 'Emp ID is required.';
+        }
 
         if (!employee.employee_name) {
             validationErrors.employee_name = 'Name is required.';
@@ -94,7 +94,7 @@ const Register = () => {
         }
 
         if (!employee.designation) {
-            validationErrors.designation = 'designationation is required.';
+            validationErrors.designation = 'designation is required.';
         }
 
         if (!employee.dob) {

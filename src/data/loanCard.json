@@ -9,6 +9,11 @@
         "loan_id":2,
         "loan_type":"Stationary",
         "duration": 1
+    },
+    {
+        "loan_id":3,
+        "loan_type":"Electronics",
+        "duration": 1
     }
 ]
 

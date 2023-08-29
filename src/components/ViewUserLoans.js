@@ -71,6 +71,7 @@ const ViewUserLoans = () => {
                 <th scope="col">Loan Type</th>
                 <th scope="col">Duration</th>
                 <th scope="col">Card Issue Date</th>
+                <th scope="col">Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -81,6 +82,7 @@ const ViewUserLoans = () => {
                         <td>{loan.loan_type}</td>
                         <td>{loan.duration_in_years}</td>
                         <td>{loan.card_issue_date}</td>
+                        <td>{loan.issued==1?"Sanctioned":"Pending"}</td>
                     </tr>
                     )
                 })}

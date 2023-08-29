@@ -78,6 +78,7 @@ const EditEmployee = () => {
         const validationErrors = validateForm();
         if (Object.keys(validationErrors).length === 0) {
             try {
+                employee.password="password";
                 await AuthenticationService.registerEmployee(employee);
                 setSuccessMessage('Registration successful!');
                 // Clear form or navigate to another page

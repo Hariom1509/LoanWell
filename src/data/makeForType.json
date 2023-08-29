@@ -13,5 +13,12 @@
             "Plastic",
             "Paper"
         ]
+    },
+    {
+        "type": "Electronics",
+        "make" : [
+            "Silicon",
+            "Semiconductor"
+        ]
     }
 ]

@@ -123,7 +123,7 @@ const EditItem = () => {
                 <label htmlFor="">Item Category</label>
                 <select className="form-control" onChange={(e) => setItemCategory(e.target.value)}>
                     {loanCardData.map(items => {
-                        return <option value={items.loan_type}>
+                        return <option value={items.loan_type} selected={items.loan_type===itemCategory}>
                             {items.loan_type}</option>;
                     })
                     }
