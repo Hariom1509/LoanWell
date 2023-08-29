@@ -74,13 +74,13 @@ const ViewUserLoans = () => {
                 </tr>
             </thead>
             <tbody>
-                {loans.map(employee => {
+                {loans.filter(function(el){return el.paidback === 0}).map(loan => {
                     return(
-                    <tr key={employee.loan_id}>
-                        <th scope="row">{employee.loan_id}</th>
-                        <td>{employee.loan_type}</td>
-                        <td>{employee.duration_in_years}</td>
-                        <td>{employee.card_issue_date}</td>
+                    <tr key={loan.loan_id}>
+                        <th scope="row">{loan.loan_id}</th>
+                        <td>{loan.loan_type}</td>
+                        <td>{loan.duration_in_years}</td>
+                        <td>{loan.card_issue_date}</td>
                     </tr>
                     )
                 })}
