@@ -76,9 +76,9 @@ const AddItem = () => {
 
     return (
         <div className="create">
-            <h2>Add Item Master Data Details</h2>
+            <h2 className="col-9 mx-auto">Add Item Master Data Details</h2>
             <form action="" onSubmit={handleSubmit}>
-
+            <div className="form-group col-9 mx-auto">
                 <label htmlFor="">Item Category</label>
                 <select  onChange={(e) => setItemCategory(e.target.value)}>
                     {loanCardData.map(items => {
@@ -124,6 +124,7 @@ const AddItem = () => {
 
                 {!isPending && <button>Add Item</button>}
                 {isPending && <button disabled>Adding...</button>}
+                </div>
             </form>
 
         </div>

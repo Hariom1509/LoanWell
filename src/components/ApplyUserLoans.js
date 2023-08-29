@@ -140,8 +140,9 @@ const ApplyUserLoans = () => {
             {console.log("Make"+JSON.stringify(allMake))}
             {console.log("Category"+item_category)} */}
 
-            <h2>Select Product and Apply for Loan</h2>
+            <h2 className="col-9 mx-auto">Select Product and Apply for Loan</h2>
             <form action="" onSubmit={handleSubmit}>
+                <div className="form-group col-9 mx-auto">
                 <label htmlFor="">Employee id</label>
                 <input type="text"
                     required
@@ -222,6 +223,7 @@ const ApplyUserLoans = () => {
                 <p>{body}</p>
                 <p>{author}</p> */}
                 <div>
+                </div>
                 </div>
             </form>
 

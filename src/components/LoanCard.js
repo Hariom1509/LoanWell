@@ -71,6 +71,7 @@ const LoanCard = () => {
                 <button className="btn btn-info w-auto" onClick={addLoan}>Add Loan</button>
             </div >
             <br/>
+            <div className="table-responsive">
             <table class="table table-dark table-striped">
             <thead>
                 <tr>
@@ -95,6 +96,7 @@ const LoanCard = () => {
                 
             </tbody>
             </table>
+            </div>
         </div>
     );
 };

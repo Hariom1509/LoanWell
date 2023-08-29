@@ -56,19 +56,19 @@ const Login = () => {
             <span className='head'><h2>LOGIN</h2></span>
             <br></br>
             <br></br>
-            <div className="form-group">
-            <label>Employee_id:</label>
+            <div className="form-group d-grid gap-2 col-6 mx-auto">
+            <label>Employee Id:</label>
             <input type="employee_id" className="form-control" value={employee_id} onChange={(e) => setEmployee_id(e.target.value)} />
             </div>
-            <div className="form-group">
+            <div className="form-group d-grid gap-2 col-6 mx-auto">
             <label>Password:</label>
             <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
             <br></br>
-            <div className="form-group d-grid gap-2 col-6 mx-auto">
+            <div className="form-group d-grid gap-2 col-4 mx-auto">
               <button className="btn btn-success" onClick={handleLogin}>Login</button>
               <br />
-              <h5><Link to = "/admin-login" style={{textDecoration:'none', paddingLeft:"2.5em"}}>Log in as Admin</Link></h5>
+              <h5><Link to = "/admin-login" style={{textDecoration:'none', paddingLeft:"0.5em"}}>Log in as Admin</Link></h5>
             </div>
             {/* <br/>
             <br />

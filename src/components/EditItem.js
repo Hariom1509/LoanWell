@@ -110,9 +110,9 @@ const EditItem = () => {
 
     return (
         <div className="create">
-            <h3>Edit Item Id: {id["id"]}</h3>
+            <h3 className="col-9 mx-auto">Edit Item Id: {id["id"]}</h3>
             <form action="" onSubmit={handleSubmit}>
-
+            <div className="form-group col-9 mx-auto">
                 <label>Item Id:</label>
                 <input
                     disabled
@@ -165,6 +165,7 @@ const EditItem = () => {
 
                 {!isPending && <button>Edit</button>}
                 {isPending && <button disabled>Editing...</button>}
+                </div>
             </form>
 
         </div>

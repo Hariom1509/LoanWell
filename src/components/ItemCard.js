@@ -71,6 +71,7 @@ const ItemCard = () => {
                 <button className="btn btn-info w-auto" onClick={addItem}>Add Item</button>
             </div >
             <br/>
+            <div className="table-responsive" style={{minWidth:'110%'}}>
             <table class="table table-dark table-striped">
             <thead>
                 <tr>
@@ -99,6 +100,7 @@ const ItemCard = () => {
                 
             </tbody>
             </table>
+            </div>
         </div>
     );
 };

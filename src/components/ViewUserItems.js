@@ -51,16 +51,19 @@ const ViewUserItems= () => {
             <br />
             <br />
 
-            <table class="table-primary">
-            <tr class="table-primary">
-            <td class="table-primary"><b>Employee id:</b> {sessionStorage.getItem('id')}</td>
-            <td class="table-primary"><b>Designation:</b> {sessionStorage.getItem('design')}</td>
-            <td class="table-primary"><b>Department:</b> {sessionStorage.getItem('dept')}</td>
-            </tr>
-            </table>
+            <div className="table-responsive">
+                <table class="table-primary">
+                <tr class="table-primary">
+                <td class="table-primary"><b>Employee id:</b> {sessionStorage.getItem('id')}</td>
+                <td class="table-primary"><b>Designation:</b> {sessionStorage.getItem('design')}</td>
+                <td class="table-primary"><b>Department:</b> {sessionStorage.getItem('dept')}</td>
+                </tr>
+                </table>
+            </div>
 
             <br />
             <br />
+            <div className="table-responsive">
             <table class="table table-dark table-striped">
             <thead>
                 <tr>
@@ -86,6 +89,7 @@ const ViewUserItems= () => {
                 
             </tbody>
             </table>
+            </div>
         </div>
     );
 };

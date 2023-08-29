@@ -20,7 +20,7 @@ const UserDashboard = () => {
     
 
     return(
-        <div className="container">
+        <div className="container col-6 mx-auto">
             <span className='head'><h2>Dashboard for {sessionStorage.getItem('name')}</h2></span>
             <br />
             <br />
