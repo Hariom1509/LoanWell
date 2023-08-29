@@ -64,7 +64,7 @@ const ViewUserLoans = () => {
             <br />
             <br />
             <div className="table-responsive">
-            <table class="table table-dark table-striped">
+            <table class="table table-dark table-striped" style={{borderRadius:'15px', overflow:'hidden'}}>
             <thead>
                 <tr>
                 <th scope="col">Loan Id</th>

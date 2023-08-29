@@ -64,7 +64,7 @@ const EditCustData = () => {
             </div>
             <br />
             <div style={{diplay:'flex', width:'25%', transform: 'rotate (-90deg)', position: 'absolute', left: '30%'}}>
-            <table class="table table-dark table-striped">
+            <table class="table table-dark table-striped" style={{borderRadius:'15px', overflow:'hidden'}}>
             <thead>
                 <tr>
                     <th scope="col">Employee Id</th>
