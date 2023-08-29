@@ -109,9 +109,10 @@ const Register = () => {
 
     return (
         <div className="registration-container container-fluid">
-            <h2 className='head'>EMPLOYEE REGISTRATION</h2>
+            <h2 className='head col-9 mx-auto'>EMPLOYEE REGISTRATION</h2>
             {successMessage && <p className="success-message">{successMessage}</p>}
             <form onSubmit={handleSubmit} class="form-horizontal">
+            <div className="form-group col-9 mx-auto">
             <div className='row'>
                     <div className='col'>
                         <div className="form-group">
@@ -232,6 +233,7 @@ const Register = () => {
                     <button type="submit" className="btn btn-success">
                         Register
                     </button>
+                </div>
                 </div>
             </form>
         </div >

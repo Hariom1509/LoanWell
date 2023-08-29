@@ -137,9 +137,10 @@ const EditEmployee = () => {
 
     return (
         <div className="registration-container container-fluid">
-            <h2 className='head'>EDIT EMPLOYEE DATA</h2>
+            <h2 className='head col-9 mx-auto'>EDIT EMPLOYEE DATA</h2>
             {successMessage && <p className="success-message">{successMessage}</p>}
             <form onSubmit={handleSubmit} class="form-horizontal">
+            <div className="form-group col-9 mx-auto">
             <div className='row'>
                     <div className='col'>
                         <div className="form-group">
@@ -261,6 +262,7 @@ const EditEmployee = () => {
                     <button type="submit" className="btn btn-success">
                         Edit Employee Data
                     </button>
+                </div>
                 </div>
             </form>
         </div >
