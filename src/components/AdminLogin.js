@@ -48,14 +48,14 @@ const AdminLogin = () => {
     return(
         <div className="container">
           
-            <span className='head'><h2>ADMIN LOGIN</h2></span>
+            <span className='head col-6 mx-auto'><h2>ADMIN LOGIN</h2></span>
             <br></br>
             <br></br>
-            <div className="form-group">
-            <label>Employee_id:</label>
+            <div className="form-group d-grid gap-2 col-6 mx-auto">
+            <label>Employee Id:</label>
             <input type="employee_id" className="form-control" value={employee_id} onChange={(e) => setEmployee_id(e.target.value)} />
             </div>
-            <div className="form-group">
+            <div className="form-group d-grid gap-2 col-6 mx-auto">
             <label>Password:</label>
             <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>

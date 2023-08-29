@@ -94,9 +94,9 @@ const EditLoan = () => {
 
     return (
         <div className="create">
-            <h2>Add Loan Master Data Details</h2>
+            <h2 className='head col-6 mx-auto'>Add Loan Master Data Details</h2>
             <form action="" onSubmit={handleSubmit}>
-                
+                <div className="form-group d-grid gap-2 col-6 mx-auto">
                 <label>Loan Id:</label>
                 <input
                     disabled
@@ -127,6 +127,7 @@ const EditLoan = () => {
     
                 {!isPending && <button>Edit Loan</button>}
                 {isPending && <button disabled>Editing...</button>}
+                </div>
             </form>
 
         </div>

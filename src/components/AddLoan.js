@@ -66,9 +66,9 @@ const AddLoan = () => {
 
     return (
         <div className="create">
-            <h2>Add Loan Master Data Details</h2>
+            <h2 className="col-9 mx-auto">Add Loan Master Data Details</h2>
             <form action="" onSubmit={handleSubmit}>
-                
+            <div className="form-group col-9 mx-auto">
                 <label htmlFor="">Loan Type</label>
                 <select  onChange={(e)=>setLoanType(e.target.value)}>
                     { loanCardData.map(items => { 
@@ -92,6 +92,7 @@ const AddLoan = () => {
     
                 {!isPending && <button>Add Loan</button>}
                 {isPending && <button disabled>Adding...</button>}
+                </div>
             </form>
 
         </div>
@@ -101,8 +102,3 @@ const AddLoan = () => {
 };
 
 export default AddLoan;
-
-
-
-
-
