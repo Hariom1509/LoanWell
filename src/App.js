@@ -19,6 +19,7 @@ import bgVideo from "./assets/bgVideo.mp4";
 import EditItem from './components/EditItem';
 import EditLoan from './components/EditLoan';
 import EditEmployee from './components/EditEmployee';
+import ViewAllLoans from './components/ViewAllLoans';
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
           <Route path = '/addLoan' element={<AddLoan/>}/>
           <Route path = '/editLoan/:id' element={<EditLoan/>}/>
           <Route path = '/editEmployee/:id' element={<EditEmployee/>}/>
+          <Route path = '/view-all-loans' element={<ViewAllLoans />}/>
         </Routes>
       </Router>
       </div>
